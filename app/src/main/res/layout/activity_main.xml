@@ -11,9 +11,23 @@
         android:layout_width="129dp"
         android:layout_height="124dp"
         android:layout_marginTop="60dp"
+        android:contentDescription="@string/weatherIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rainyday" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="129dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="10dp"
+        android:clickable="false"
+        android:text="@string/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:gravity="center"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
