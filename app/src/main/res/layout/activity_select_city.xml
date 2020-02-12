@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".SelectCity">
 
+
+    <AutoCompleteTextView
+        android:id="@+id/enterUserLocation"
+        android:layout_width="236dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="@string/please_enter_your_location"
+
+        android:inputType="textAutoComplete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/toMainScreenButton"
+        android:layout_width="269dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/toMainScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxPressure" />
+
+
+    <CheckBox
+        android:id="@+id/checkBoxPressure"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/atmPressureCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxWind" />
+
+    <CheckBox
+        android:id="@+id/checkBoxWind"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/windCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterUserLocation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,8 @@
 <resources>
+    <!-- Titles   -->
     <string name="app_name" translatable="false">DWeather</string>
     <string name="title_activity_main">Main screen</string>
-    <string name="title_select_city">Select city</string>
+    <string name="title_select_city">Select Location</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
@@ -18,6 +19,24 @@
     <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+
+    <!-- legend   -->
     <string name="textView">Temperature</string>
     <string name="weatherIcon">Weather icon</string>
+    <string name="toMainScreen">Return to main screen</string>
+    <string name="toSelectCity">Select Location</string>
+    <string name="atmPressureCheckBox">show atmospheric pressure</string>
+    <string name="windCheckBox">show wind speed</string>
+    <string name="please_enter_your_location">Please enter your location</string>
+    
+    <string-array name="locations">
+        <item>Moscow</item>
+        <item>Saint Petersburg</item>
+        <item>Kazan</item>
+        <item>Novosibirsk</item>
+        <item>Ekaterinburg</item>
+        <item>Nizhny Novgorod</item>
+        <item>Chelyabinsk</item>
+        <item>Omsk</item>
+     </string-array>
 </resources>
