@@ -11,6 +11,8 @@
     <string name="atmPressureCheckBox">показывать атмосферное давление</string>
     <string name="windCheckBox">показывать скорость ветра</string>
     <string name="please_enter_your_location">Укажите местоположение</string>
+    <string name="menu_button_about">О программе</string>
+    <string name="menu_button_settings">Настроки</string>
 
     <!--    Cites-->
     <string-array name="locations">
