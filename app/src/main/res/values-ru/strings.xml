@@ -7,22 +7,18 @@
     <string name="textView">Температура</string>
     <string name="weatherIcon">Значок погоды</string>
     <string name="toMainScreen">Вернуться на главный экран</string>
-    <string name="toSelectCity">Выбрать город</string>
+    <string name="toSelectLocation">Выбрать город</string>
     <string name="atmPressureCheckBox">показывать атмосферное давление</string>
     <string name="windCheckBox">показывать скорость ветра</string>
     <string name="please_enter_your_location">Укажите местоположение</string>
     <string name="menu_button_about">О программе</string>
     <string name="menu_button_settings">Настроки</string>
 
-    <!--    Cites-->
-    <string-array name="locations">
-        <item>Москва</item>
-        <item>Санкт-Петербург</item>
-        <item>Казань</item>
-        <item>Новосибирск</item>
-        <item>Екатеринбург</item>
-        <item>Нижний Новгород</item>
-        <item>Челябинск</item>
-        <item>Омск</item>
-    </string-array>
+    <string name="menu_button_selectLocation">Указать местоположение</string>
+    <string name="menu_button_quit">Выход</string>
+    <string name="display_setting">Настройки отображения</string>
+    <string name="user_location_title">Ваше местоположение</string>
+    <string name="color_scheme_title">Вкл. темную тему</string>
+    <string name="color_sсheme_header">Оформление</string>
+    <string name="show_wind_and_pressure">Показывать скорость ветра и атм. давление</string>
 </resources>
