@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< Updated upstream
         Button toSelectLocationButton = findViewById(R.id.selectLocationButton);
         toSelectLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,6 +25,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(selectCityIntent);
             }
         });
+=======
+//        Button toSelectLocationButton = findViewById(R.id.button_menu_location);
+//        toSelectLocationButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent selectCityIntent = new Intent(MainActivity.this, SelectCity.class);
+//                startActivity(selectCityIntent);
+//            }
+//        });
+
+>>>>>>> Stashed changes
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
