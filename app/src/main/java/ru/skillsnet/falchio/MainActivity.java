@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(selectCityIntent);
 //            }
 //        });
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
