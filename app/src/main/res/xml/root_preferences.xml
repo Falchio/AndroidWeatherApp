@@ -14,38 +14,43 @@
   ~ limitations under the License.
   -->
 
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/display_setting">
 
         <EditTextPreference
             app:key="location"
             app:title="@string/user_location_title"
+            android:defaultValue="@string/default_user_location"
             app:useSimpleSummaryProvider="true" />
 
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/displayed_parameters"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+<!--        <AutoCompleteTextView-->
+<!--            android:id="@+id/enterUserLocation"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/please_enter_your_location"-->
+
+<!--            android:inputType="textAutoComplete"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </PreferenceCategory>
 
-<!--    <PreferenceCategory app:title="@string/color_sсheme_header">-->
+    <PreferenceCategory app:title="@string/info_to_display">
+        <CheckBoxPreference
+            android:key="setting_check_wind"
+            android:title="@string/windCheckBox"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:key="setting_check_atmPressure"
+            android:title="@string/atmPressureCheckBox"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
 
-<!--        <SwitchPreferenceCompat-->
-<!--            app:key="color_scheme"-->
-<!--            app:title="@string/color_scheme_title" />-->
-
-<!--        <SwitchPreferenceCompat-->
-<!--            app:dependency="sync"-->
-<!--            app:key="attachment"-->
-<!--            app:summaryOff="@string/attachment_summary_off"-->
-<!--            app:summaryOn="@string/attachment_summary_on"-->
-<!--            app:title="@string/attachment_title" />-->
-
-<!--    </PreferenceCategory>-->
 
 </PreferenceScreen>

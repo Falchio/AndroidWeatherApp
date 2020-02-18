@@ -2,107 +2,35 @@ package ru.skillsnet.falchio;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+    private String userLocation;
 
-    private final String TAG = this.getClass().getSimpleName();
-    private final boolean DEBUG = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        userLocation = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("location",getResources().getString(R.string.default_user_location));
 
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +"  onCreate", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +"  onCreate");
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onStart", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onStart");
-        }
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onRestoreInstanceState", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onRestoreInstanceState");
-        }
+        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onResume", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onResume");
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onPause", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onPause");
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState) {
-        super.onSaveInstanceState(saveInstanceState);
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onSaveInstanceState", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onSaveInstanceState");
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onStop", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onStop");
-        }
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onRestart", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onRestart");
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (DEBUG){
-            Toast.makeText(getApplicationContext(),TAG +" onStop", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, TAG +" onStop");
-        }
+        userLocation = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("location",getResources().getString(R.string.default_user_location));
+        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -124,11 +52,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_menu_about:
                 return true;
             case R.id.button_menu_quit:
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
