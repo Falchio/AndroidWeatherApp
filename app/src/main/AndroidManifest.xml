@@ -19,8 +19,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SelectCity"
-            android:label="@string/title_select_city"></activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"

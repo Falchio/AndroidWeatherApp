@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingIntent);
                 return true;
-            case R.id.button_menu_location:
-                Intent selectCityIntent = new Intent(MainActivity.this, SelectCity.class);
-                startActivity(selectCityIntent);
-                return true;
             case R.id.button_menu_about:
                 return true;
             case R.id.button_menu_quit:

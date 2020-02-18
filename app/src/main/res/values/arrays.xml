@@ -1,18 +1,6 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>@string/atmPressureCheckBox</item>
-        <item>@string/windCheckBox</item>
-        <item>@string/show_wind_and_pressure</item>
-    </string-array>
 
-    <string-array name="displayed_parameters">
-        <item>"@string/atmPressureCheckBox"</item>
-        <item>reply_all</item>
-        <item>reply_all</item>
-    </string-array>
-
-    <string-array name="locations">
+     <string-array name="locations">
         <item>Moscow</item>
         <item>Saint Petersburg</item>
         <item>Kazan</item>
