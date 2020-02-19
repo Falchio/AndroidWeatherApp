@@ -9,11 +9,11 @@
     <string name="atmPressureCheckBox">atmospheric pressure</string>
     <string name="windCheckBox">wind speed</string>
 
-<!--   Settings-->
+    <!--   Settings-->
 
     <!-- Preference Titles -->
     <string name="color_scheme_title">Use black color scheme</string>
-    <string name="display_setting" >Location setting</string>
+    <string name="display_setting">Location setting</string>
     <string name="color_sсheme_header">Color scheme</string>
     <string name="info_to_display">Information to display</string>
 
@@ -23,5 +23,10 @@
     <string name="menu_button_settings">Settings</string>
     <string name="menu_button_quit">Quit</string>
     <string name="default_user_location">Moscow</string>
+    <string name="menu_button_select_city">Select location</string>
+    <string name="hint_select_location">select location please</string>
+    <string name="location_confirm">Confirm</string>
+    <string name="history_day">This day in history</string>
+
 
 </resources>

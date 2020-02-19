@@ -19,11 +19,13 @@
 
     <PreferenceCategory app:title="@string/display_setting">
 
+
         <EditTextPreference
             app:key="location"
             app:title="@string/user_location_title"
             android:defaultValue="@string/default_user_location"
             app:useSimpleSummaryProvider="true" />
+
 
 <!--        <AutoCompleteTextView-->
 <!--            android:id="@+id/enterUserLocation"-->
@@ -31,7 +33,7 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_marginTop="32dp"-->
 <!--            android:ems="10"-->
-<!--            android:hint="@string/please_enter_your_location"-->
+<!--            android:hint="111"-->
 
 <!--            android:inputType="textAutoComplete"-->
 <!--            app:layout_constraintEnd_toEndOf="parent"-->

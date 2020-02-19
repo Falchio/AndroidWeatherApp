@@ -21,8 +21,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         userLocation = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString("location",getResources().getString(R.string.default_user_location));
+        //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
+
+        String message = getIntent().getStringExtra("Location");
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -30,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         userLocation = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString("location",getResources().getString(R.string.default_user_location));
-        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
+        //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
+
+        String message = getIntent().getStringExtra("Location");
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -45,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingIntent);
                 return true;
+            case R.id.button_menu_select_city:
+                Intent selectIntent = new Intent(MainActivity.this, SelectCity.class);
+                startActivity(selectIntent);
             case R.id.button_menu_about:
                 return true;
             case R.id.button_menu_quit:

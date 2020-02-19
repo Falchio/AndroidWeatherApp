@@ -15,4 +15,7 @@
     <string name="color_sсheme_header">Оформление</string>
     <string name="info_to_display">Информация для отображения</string>
     <string name="default_user_location">Москва</string>
+    <string name="menu_button_select_city">Указать местоположение</string>
+    <string name="hint_select_location">укажите местоположение</string>
+    <string name="location_confirm">Подтвердить</string>
 </resources>
