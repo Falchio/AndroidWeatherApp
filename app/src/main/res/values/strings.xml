@@ -28,5 +28,10 @@
     <string name="location_confirm">Confirm</string>
     <string name="history_day">This day in history</string>
 
+    <string name="temp_temperature">14℃</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="second_fragment">Second fragment</string>
+
 
 </resources>
