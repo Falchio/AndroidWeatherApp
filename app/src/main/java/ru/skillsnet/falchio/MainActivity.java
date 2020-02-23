@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
 
 
-        String message = getIntent().getStringExtra("Location");
-        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+//        String message = getIntent().getStringExtra("Location");
+//        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
 
         Button dayInHistory = findViewById(R.id.history_day);
         dayInHistory.setOnClickListener(new View.OnClickListener() {

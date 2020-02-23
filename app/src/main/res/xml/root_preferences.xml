@@ -26,21 +26,6 @@
             android:defaultValue="@string/default_user_location"
             app:useSimpleSummaryProvider="true" />
 
-
-<!--        <AutoCompleteTextView-->
-<!--            android:id="@+id/enterUserLocation"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="32dp"-->
-<!--            android:ems="10"-->
-<!--            android:hint="111"-->
-
-<!--            android:inputType="textAutoComplete"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/info_to_display">
