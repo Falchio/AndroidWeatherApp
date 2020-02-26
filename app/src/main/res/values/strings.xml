@@ -29,12 +29,16 @@
     <string name="history_day">This day in history</string>
 
     <string name="temp_temperature">14℃</string>
+    <string name="celsius" translatable="false">℃</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="second_fragment">Second fragment</string>
     <string name="no_connection">"No connection to "</string>
     <string name="no_country">country not defined</string>
     <string name="no_city">City not defined</string>
+    <string name="temperature">"Temperature: "</string>
+    <string name="max_temp">"Temperature Max: "</string>
+    <string name="speed_weather">"wind speed: "</string>
 
 
 </resources>

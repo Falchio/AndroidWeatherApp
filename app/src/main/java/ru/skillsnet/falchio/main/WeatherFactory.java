@@ -69,10 +69,8 @@ public class WeatherFactory implements GlobalConstants {
                         return dataWeather;
                     }
 
-
-                    //запрашиваем создание объекта DataWeather из полученной строки
+                  //запрашиваем создание объекта DataWeather из полученной строки
                     dataWeather = new OpenWeatherJsonParser(jsonStringFromHttp).getDataWeather();
-
 
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();

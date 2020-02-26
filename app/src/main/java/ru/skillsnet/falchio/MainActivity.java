@@ -23,30 +23,22 @@ import ru.skillsnet.falchio.main.SettingsActivity;
 
 
 public class MainActivity extends AppCompatActivity implements GlobalConstants {
-    private String userLocation;
-    private MainFragment mainFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        userLocation = PreferenceManager.getDefaultSharedPreferences(this)
+//       String userLocation = PreferenceManager.getDefaultSharedPreferences(this)
 //                .getString("location",getResources().getString(R.string.default_user_location));
         //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
-
-        mainFragment = new MainFragment();
-
-//        Wind wind = new Wind();           <------ Остановился здесь
-
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        userLocation = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString("location", getResources().getString(R.string.default_user_location));
+//        String userLocation = PreferenceManager.getDefaultSharedPreferences(this)
+//                .getString("location", getResources().getString(R.string.default_user_location));
         //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
 
     }
