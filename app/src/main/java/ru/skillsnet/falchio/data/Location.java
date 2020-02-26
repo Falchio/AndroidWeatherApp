@@ -1,7 +1,5 @@
 package ru.skillsnet.falchio.data;
 
-import ru.skillsnet.falchio.R;
-
 public class Location {
     private double coordLat;
     private double coordLon;
@@ -9,9 +7,9 @@ public class Location {
     private int cityId;
     private String cityName;
 
-    public Location(double coordLat, double coordLon, String country, int cityId, String cityName) {
-        this.coordLat = coordLat;
+    public Location( double coordLon, double coordLat, String country, int cityId, String cityName) {
         this.coordLon = coordLon;
+        this.coordLat = coordLat;
         this.country = country;
         this.cityId = cityId;
         this.cityName = cityName;

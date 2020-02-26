@@ -1,21 +1,15 @@
 package ru.skillsnet.falchio.parsers;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class JsonTask extends AsyncTask<String, String, String> {
-
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
 
     protected String doInBackground(String... params) {
 
@@ -42,8 +36,6 @@ public class JsonTask extends AsyncTask<String, String, String> {
             connection.disconnect();
             return buffer.toString();
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

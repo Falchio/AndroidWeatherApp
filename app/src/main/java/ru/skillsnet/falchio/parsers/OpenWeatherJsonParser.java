@@ -1,17 +1,19 @@
 package ru.skillsnet.falchio.parsers;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import ru.skillsnet.falchio.data.Clouds;
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.data.Location;
+import ru.skillsnet.falchio.data.OpenWeatherConst;
 import ru.skillsnet.falchio.data.Temperature;
 import ru.skillsnet.falchio.data.Time;
 import ru.skillsnet.falchio.data.Weather;
 import ru.skillsnet.falchio.data.Wind;
 
-public class OpenWeatherJsonParser {
+public class OpenWeatherJsonParser implements OpenWeatherConst {
     private String jsonStringHttp;
 
     public String getJsonStringHttp() {
@@ -26,67 +28,144 @@ public class OpenWeatherJsonParser {
         this.jsonStringHttp = jsonStringHttp;
     }
 
-    public DataWeather getDataWeather(){
+    public DataWeather getDataWeather() {
         JSONObject readerJson;
-        Location location;
-        Weather weather;
-        Temperature temperature;
-        Clouds clouds;
-        Wind wind;
-        Time time;
         DataWeather dataWeather = null;
 
         try {
             readerJson = new JSONObject(getJsonStringHttp());
-            location = getLocation(readerJson);
-            weather = getWeather(readerJson);
-            temperature = getTemperature(readerJson);
-            clouds = getClouds(readerJson);
-            wind = getWind(readerJson);
-            time = getTime(readerJson);
-            dataWeather = new DataWeather(location,time,temperature,clouds,weather,wind);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (Exception e){
+
+            dataWeather = new DataWeather(
+                    getLocation(readerJson),
+                    getTime(readerJson),
+                    getTemperature(readerJson),
+                    getClouds(readerJson),
+                    getWeather(readerJson),
+                    getWind(readerJson)
+            );
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         return dataWeather;
     }
 
     //сделать так чтобы в случае ошибки использовался конструктор по умолчанию, на случай ошибок, чтобы обеспечить хоть какую-нибудь функциональность.
-    private Location getLocation(JSONObject readerJson){
-        Location location = null;
+    private Location getLocation(JSONObject readerJson) {
+        Location location;
+        try{
+            JSONObject coordJson = readerJson.getJSONObject(COORDINATE);
+            JSONObject sysJson = readerJson.getJSONObject(SYSTEM);
+
+            location = new Location(
+                    coordJson.getDouble(LONGITUDE),
+                    coordJson.getDouble(LATITUDE),
+                    sysJson.getString(COUNTRY),
+                    readerJson.getInt(CITY_ID),
+                    readerJson.getString(CITY_NAME)
+            );
+
+        }catch (JSONException e){
+            e.printStackTrace();
+            location = new Location();
+        }
+
         return location;
     }
 
-    private Weather getWeather(JSONObject readerJson){
-        Weather weather = null;
+    private Weather getWeather(JSONObject readerJson) {
+        Weather weather;
+
+        try{
+            JSONArray weatherArr = readerJson.getJSONArray(WEATHER);
+            JSONObject weatherObj = weatherArr.getJSONObject(0);
+            weather = new Weather(
+                    weatherObj.getInt(WEATHER_ID),
+                    weatherObj.getString(WEATHER_MAIN),
+                    weatherObj.getString(DESCRIPTION),
+                    weatherObj.getString(WEATHER_ICON)
+            );
+        }catch (JSONException e){
+            e.printStackTrace();
+            weather = new Weather();
+        }
+
         return weather;
     }
 
-    private Temperature getTemperature(JSONObject readerJson){
-        Temperature temperature = null;
+    private Temperature getTemperature(JSONObject readerJson) {
+        Temperature temperature;
+        try {
+            JSONObject tempJson = readerJson.getJSONObject(MAIN_TEMPERATURE);
+            temperature= new Temperature(
+                    tempJson.getDouble(TEMPERATURE),
+                    tempJson.getDouble(TEMPERATURE_FEELS_LIKE),
+                    tempJson.getDouble(TEMP_MIN),
+                    tempJson.getDouble(TEMP_MAX)
+            );
+
+        } catch (JSONException e){
+            e.printStackTrace();
+            temperature = new Temperature();
+        }
         return temperature;
     }
 
-    private Clouds getClouds(JSONObject readerJson){
-        Clouds clouds = null;
+    private Clouds getClouds(JSONObject readerJson) {
+        Clouds clouds;
+
+        try{
+            JSONArray cloudsArr = readerJson.getJSONArray(CLOUDS);
+            JSONObject cloudsJson = cloudsArr.getJSONObject(0);
+            JSONObject cloudsJsonMain = readerJson.getJSONObject(MAIN_TEMPERATURE);
+
+            clouds = new Clouds(
+                    cloudsJson.getInt(CLOUDS_ALL),
+                    cloudsJsonMain.getInt(PRESSURE),
+                    cloudsJsonMain.getInt(HUMIDITY),
+                    readerJson.getInt(VISIBILITY)
+            );
+        } catch (JSONException e){
+            e.printStackTrace();
+            clouds = new Clouds();
+        }
+
         return clouds;
     }
 
-    private Wind getWind(JSONObject readerJson){
-        Wind wind = null;
+    private Wind getWind(JSONObject readerJson) {
+        Wind wind;
+
+        try {
+            JSONObject windJson = readerJson.getJSONObject(WIND);
+            wind = new Wind(
+                    windJson.getInt(WIND_SPEED),
+                    windJson.getInt(WIND_DEGREES));
+        } catch (JSONException e) {
+            e.printStackTrace();
+            wind = new Wind();
+        }
         return wind;
     }
 
-    private Time getTime(JSONObject readerJson){
-        Time time= null;
+    private Time getTime(JSONObject readerJson) {
+        Time time;
+
+        try {
+            JSONObject timeJsonSys = readerJson.getJSONObject(SYSTEM);
+            time = new Time(
+                    timeJsonSys.getLong(SUNRISE_TIME),
+                    timeJsonSys.getLong(SUNSET_TIME),
+                    readerJson.getLong(TIME_ZONE),
+                    readerJson.getLong(DATA_TIME)
+            );
+
+        }catch (JSONException e){
+            e.printStackTrace();
+            time = new Time();
+        }
         return time;
     }
-
-
-
 
 }

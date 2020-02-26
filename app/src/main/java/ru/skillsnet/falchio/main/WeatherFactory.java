@@ -74,9 +74,7 @@ public class WeatherFactory implements GlobalConstants {
                     dataWeather = new OpenWeatherJsonParser(jsonStringFromHttp).getDataWeather();
 
 
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
+                } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
                 }
 

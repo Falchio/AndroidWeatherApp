@@ -32,7 +32,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="second_fragment">Second fragment</string>
-    <string name="no_connection">"No connction to "</string>
+    <string name="no_connection">"No connection to "</string>
     <string name="no_country">country not defined</string>
     <string name="no_city">City not defined</string>
 
