@@ -13,6 +13,13 @@ public class Weather {
         this.weatherIcon = weatherIcon;
     }
 
+    public Weather() {
+        this.weatherId = 0;
+        this.weatherMain = "null";
+        this.description = "null";
+        this.weatherIcon = "01n";
+    }
+
     public int getWeatherId() {
         return weatherId;
     }

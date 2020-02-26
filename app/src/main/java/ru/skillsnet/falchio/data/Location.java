@@ -1,5 +1,7 @@
 package ru.skillsnet.falchio.data;
 
+import ru.skillsnet.falchio.R;
+
 public class Location {
     private double coordLat;
     private double coordLon;
@@ -13,6 +15,14 @@ public class Location {
         this.country = country;
         this.cityId = cityId;
         this.cityName = cityName;
+    }
+
+    public Location(){
+        this.coordLat = 0;
+        this.coordLon = 0;
+        this.country = "Country not defined";
+        this.cityId = 0;
+        this.cityName = "City not defined";
     }
 
     public double getCoordLat() {

@@ -14,6 +14,13 @@ public class Time {
         this.dataTime = dataTime;
     }
 
+    public Time() {
+        this.sunriseTime = 0;
+        this.sunsetTime = 0;
+        this.timezone = 0;
+        this.dataTime = 0;
+    }
+
     public long getSunriseTime() {
         return sunriseTime;
     }

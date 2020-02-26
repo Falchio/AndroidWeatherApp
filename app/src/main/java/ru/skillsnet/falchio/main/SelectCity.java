@@ -1,4 +1,4 @@
-package ru.skillsnet.falchio;
+package ru.skillsnet.falchio.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+
+import ru.skillsnet.falchio.MainActivity;
+import ru.skillsnet.falchio.R;
 
 public class SelectCity extends AppCompatActivity {
     private String userLocation;
@@ -44,7 +47,7 @@ public class SelectCity extends AppCompatActivity {
                 editor.putString("location", userLocation);
                 editor.commit();
 
-                Intent locationIntent = new Intent(SelectCity.this,MainActivity.class);
+                Intent locationIntent = new Intent(SelectCity.this, MainActivity.class);
                 locationIntent.putExtra("Location", userLocation);
 
                 startActivity(locationIntent);

@@ -17,10 +17,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import ru.skillsnet.falchio.data.Constants;
+import ru.skillsnet.falchio.data.GlobalConstants;
+import ru.skillsnet.falchio.main.SelectCity;
+import ru.skillsnet.falchio.main.SettingsActivity;
 
 
-public class MainActivity extends AppCompatActivity implements Constants {
+public class MainActivity extends AppCompatActivity implements GlobalConstants {
     private String userLocation;
     private MainFragment mainFragment;
 

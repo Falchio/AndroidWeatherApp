@@ -1,9 +1,11 @@
-package ru.skillsnet.falchio;
+package ru.skillsnet.falchio.main;
 
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+
+import ru.skillsnet.falchio.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

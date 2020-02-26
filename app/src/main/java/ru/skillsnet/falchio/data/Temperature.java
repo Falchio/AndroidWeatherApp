@@ -14,6 +14,13 @@ public class Temperature {
         this.tempMax = tempMax;
     }
 
+    public Temperature() {
+        this.temp = -200;
+        this.tempFeelsLike = -200;
+        this.tempMin = -200;
+        this.tempMax = -200;
+    }
+
     public double getTemp() {
         return temp;
     }
