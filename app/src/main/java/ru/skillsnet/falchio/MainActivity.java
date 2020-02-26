@@ -4,17 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import ru.skillsnet.falchio.data.Constants;
 
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Constants {
     private String userLocation;
     private MainFragment mainFragment;
 
@@ -28,25 +34,29 @@ public class MainActivity extends AppCompatActivity {
         //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
 
         mainFragment = new MainFragment();
+
+//        Wind wind = new Wind();           <------ Остановился здесь
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         userLocation = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString("location",getResources().getString(R.string.default_user_location));
+                .getString("location", getResources().getString(R.string.default_user_location));
         //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
 
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_menu,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.button_menu_settings:
                 Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(settingIntent);
@@ -62,5 +72,25 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void saveToFile(Parcelable parcel, String fileName) {
+        try (FileOutputStream fileOutputStream = getApplication().openFileOutput(fileName, Context.MODE_PRIVATE);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+            objectOutputStream.writeObject(parcel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Parcelable readOutFile(String fileName) {
+        Parcelable parcel = null;
+        try (FileInputStream fis = getApplication().openFileInput(fileName);
+             ObjectInputStream is = new ObjectInputStream(fis)) {
+            parcel = (Parcelable) is.readObject();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return parcel;
     }
 }
