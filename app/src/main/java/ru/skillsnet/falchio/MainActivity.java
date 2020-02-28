@@ -3,6 +3,7 @@ package ru.skillsnet.falchio;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,19 +29,11 @@ public class MainActivity extends AppCompatActivity implements GlobalConstants {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//       String userLocation = PreferenceManager.getDefaultSharedPreferences(this)
-//                .getString("location",getResources().getString(R.string.default_user_location));
-        //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        String userLocation = PreferenceManager.getDefaultSharedPreferences(this)
-//                .getString("location", getResources().getString(R.string.default_user_location));
-        //        Toast.makeText(getApplicationContext(),userLocation, Toast.LENGTH_SHORT).show();
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

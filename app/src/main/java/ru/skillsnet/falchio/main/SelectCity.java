@@ -45,7 +45,7 @@ public class SelectCity extends AppCompatActivity {
 
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("location", userLocation);
-                editor.apply();
+                editor.commit();
 
                 Intent locationIntent = new Intent(SelectCity.this, MainActivity.class);
                 locationIntent.putExtra("Location", userLocation);

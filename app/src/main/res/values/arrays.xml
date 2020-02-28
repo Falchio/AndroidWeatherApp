@@ -19,6 +19,22 @@
         <item>Омск</item>
     </string-array>
 
+   <string-array name="other_city">
+      <item>Berlin -5</item>
+      <item>Tokyo +15</item>
+      <item>Barcelona +30</item>
+      <item>Moscow -4</item>
+      <item>Saint-Petersburg -1</item>
+      <item>Volgograd +9</item>
+      <item>Paris + 5</item>
+      <item>Berlin -5</item>
+      <item>Tokyo +15</item>
+      <item>Barcelona +30</item>
+      <item>Moscow -4</item>
+      <item>Saint-Petersburg -1</item>
+      <item>Volgograd +9</item>
+      <item>Paris + 5</item>
+   </string-array>
 
 
 </resources>

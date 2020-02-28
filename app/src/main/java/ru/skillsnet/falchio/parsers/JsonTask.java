@@ -33,7 +33,6 @@ public class JsonTask extends AsyncTask<String, String, String> {
 //                Log.d("Response: ", "> " + line);
             }
 
-            connection.disconnect();
             return buffer.toString();
 
         } catch (IOException e) {

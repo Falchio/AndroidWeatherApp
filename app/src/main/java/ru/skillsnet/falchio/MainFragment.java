@@ -40,11 +40,7 @@ public class MainFragment extends Fragment {
                 .getString("location",getResources().getString(R.string.default_user_location));
         Toast.makeText(getContext(),userLocation, Toast.LENGTH_LONG).show();
 
-        weather = new WeatherFactory(
-                getContext(),
-                OPEN_WEATHER,
-                userLocation
-        ).getDataWeather();
+
 
     }
 
@@ -53,21 +49,35 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
                 // Inflate the layout for this fragment
+
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
-        StringBuilder forecastMessage = new StringBuilder();
-            forecastMessage.append(getString(R.string.temperature)+
-            weather.getTemperature().getTemp()+
-            "\n" + getString(R.string.temp_min) + weather.getTemperature().getTempMin()+
-            "\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax()+
-            "\n" + getString(R.string.feels_like) + weather.getTemperature().getTempFeelsLike()+
-            "\n" + getString(R.string.pressure) +weather.getClouds().getAtmPressure()+
-            "\n" + weather.getWeather().getDescription()+
-            "\n"+ getString(R.string.speed_weather) + weather.getWind().getWindSpeed()+
-            "\n" + getString(R.string.wind_direction)+ weather.getWind().getWindDirection()+
-            "\n" + getString(R.string.visibility) + weather.getClouds().getVisibility());
-        temperatureTextView.setText(forecastMessage);
+
+        setWeatherText(); //Устанавливаем значение температурного табло
+
         return rootView;
+    }
+
+    private void setWeatherText(){
+
+        weather = new WeatherFactory(
+                getContext(),
+                OPEN_WEATHER,
+                userLocation
+        ).getDataWeather();
+
+        StringBuilder forecastMessage = new StringBuilder();
+        forecastMessage.append(
+                getString(R.string.temperature)+weather.getTemperature().getTemp()+
+                "\n" + getString(R.string.temp_min) + weather.getTemperature().getTempMin()+
+                "\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax()+
+                "\n" + getString(R.string.feels_like) + weather.getTemperature().getTempFeelsLike()+
+                "\n" + getString(R.string.pressure) +weather.getClouds().getAtmPressure()+
+                "\n" + weather.getWeather().getDescription()+
+                "\n"+ getString(R.string.speed_weather) + weather.getWind().getWindSpeed()+
+                "\n" + getString(R.string.wind_direction)+ weather.getWind().getWindDirection()+
+                "\n" + getString(R.string.visibility) + weather.getClouds().getVisibility());
+        temperatureTextView.setText(forecastMessage);
     }
 
 }
