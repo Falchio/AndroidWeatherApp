@@ -7,8 +7,14 @@ import java.util.concurrent.ExecutionException;
 
 
 import ru.skillsnet.falchio.R;
+import ru.skillsnet.falchio.data.Clouds;
 import ru.skillsnet.falchio.data.GlobalConstants;
 import ru.skillsnet.falchio.data.DataWeather;
+import ru.skillsnet.falchio.data.Location;
+import ru.skillsnet.falchio.data.Temperature;
+import ru.skillsnet.falchio.data.Time;
+import ru.skillsnet.falchio.data.Weather;
+import ru.skillsnet.falchio.data.Wind;
 import ru.skillsnet.falchio.parsers.JsonTask;
 import ru.skillsnet.falchio.parsers.OpenWeatherJsonParser;
 
@@ -66,7 +72,13 @@ public class WeatherFactory implements GlobalConstants {
                     // на случай если не удалось получить JSON объект строкой
                     if (jsonStringFromHttp==null) {
                         Toast.makeText(this.getContext(), R.string.no_connection + OPEN_WEATHER, Toast.LENGTH_SHORT ).show();
-                        return dataWeather;
+                        return new DataWeather(
+                                new Location(),
+                                new Time(),
+                                new Temperature(),
+                                new Clouds(),
+                                new Weather(),
+                                new Wind());
                     }
 
                   //запрашиваем создание объекта DataWeather из полученной строки

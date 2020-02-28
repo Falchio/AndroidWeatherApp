@@ -116,12 +116,11 @@ public class OpenWeatherJsonParser implements OpenWeatherConst {
         Clouds clouds;
 
         try{
-            JSONArray cloudsArr = readerJson.getJSONArray(CLOUDS);
-            JSONObject cloudsJson = cloudsArr.getJSONObject(0);
+            JSONObject cloudsJsonObject = readerJson.getJSONObject(CLOUDS);
             JSONObject cloudsJsonMain = readerJson.getJSONObject(MAIN_TEMPERATURE);
 
             clouds = new Clouds(
-                    cloudsJson.getInt(CLOUDS_ALL),
+                    cloudsJsonObject.getInt(CLOUDS_ALL),
                     cloudsJsonMain.getInt(PRESSURE),
                     cloudsJsonMain.getInt(HUMIDITY),
                     readerJson.getInt(VISIBILITY)

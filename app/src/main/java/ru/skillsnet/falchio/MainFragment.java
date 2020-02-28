@@ -55,13 +55,18 @@ public class MainFragment extends Fragment {
                 // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
-        StringBuilder forecestMesagge = new StringBuilder();
-        forecestMesagge.append(getString(R.string.temperature));
-        forecestMesagge.append(weather.getTemperature().getTemp());
-        forecestMesagge.append("\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax());
-        forecestMesagge.append("\n" + weather.getWeather().getDescription());
-        forecestMesagge.append("\n"+ getString(R.string.speed_weather) + weather.getWind().getWindSpeed());
-        temperatureTextView.setText(forecestMesagge);
+        StringBuilder forecastMessage = new StringBuilder();
+            forecastMessage.append(getString(R.string.temperature)+
+            weather.getTemperature().getTemp()+
+            "\n" + getString(R.string.temp_min) + weather.getTemperature().getTempMin()+
+            "\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax()+
+            "\n" + getString(R.string.feels_like) + weather.getTemperature().getTempFeelsLike()+
+            "\n" + getString(R.string.pressure) +weather.getClouds().getAtmPressure()+
+            "\n" + weather.getWeather().getDescription()+
+            "\n"+ getString(R.string.speed_weather) + weather.getWind().getWindSpeed()+
+            "\n" + getString(R.string.wind_direction)+ weather.getWind().getWindDirection()+
+            "\n" + getString(R.string.visibility) + weather.getClouds().getVisibility());
+        temperatureTextView.setText(forecastMessage);
         return rootView;
     }
 

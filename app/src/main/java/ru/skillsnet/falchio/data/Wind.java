@@ -29,4 +29,10 @@ public class Wind {
     public void setWindDeg(int windDeg) {
         this.windDeg = windDeg;
     }
+
+    public String getWindDirection(){
+        String[] compass = new String[] {"N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"};
+        int index = (int) Math.round((this.windDeg % 360) / 22.5 );
+        return compass[index];
+    }
 }
