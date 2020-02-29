@@ -18,4 +18,15 @@
     <string name="menu_button_select_city">Указать местоположение</string>
     <string name="hint_select_location">укажите местоположение</string>
     <string name="location_confirm">Подтвердить</string>
+    <string name="no_connection">"Нет соединения с "</string>
+    <string name="no_country">страна не найдена</string>
+    <string name="no_city">Город не найден</string>
+    <string name="temperature">"Температура: "</string>
+    <string name="max_temp">"Макс. температура: "</string>
+    <string name="speed_weather">Скорость ветра</string>
+    <string name="temp_min">Мин. температура</string>
+    <string name="feels_like">"Ощущается как: "</string>
+    <string name="pressure">Атм. давление</string>
+    <string name="wind_direction">"Направление ветра: "</string>
+    <string name="visibility">"Видимость: "</string>
 </resources>
