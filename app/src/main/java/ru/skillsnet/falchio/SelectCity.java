@@ -1,7 +1,6 @@
 package ru.skillsnet.falchio;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,9 +37,6 @@ public class SelectCity extends AppStyle {
         autoCompleteTextView.setThreshold(0);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
-
 
         Button confirm = findViewById(R.id.confirm_location);
         confirm.setOnClickListener(new View.OnClickListener() {

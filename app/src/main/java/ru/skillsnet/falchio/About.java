@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class About extends AppCompatActivity {
+import ru.skillsnet.falchio.decor.AppStyle;
+
+public class About extends AppStyle {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

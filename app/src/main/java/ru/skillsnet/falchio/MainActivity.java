@@ -2,7 +2,6 @@ package ru.skillsnet.falchio;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -54,7 +53,7 @@ public class MainActivity extends AppStyle implements GlobalConstants {
         switch (item.getItemId()) {
             case R.id.button_menu_settings:
                 Intent settingIntent = new Intent(MainActivity.this, DSetting.class);
-                startActivityForResult(settingIntent, SETTING_CODE);;
+                startActivityForResult(settingIntent, SETTING_CODE);
                 return true;
             case R.id.button_menu_select_city:
                 Intent selectIntent = new Intent(MainActivity.this, SelectCity.class);

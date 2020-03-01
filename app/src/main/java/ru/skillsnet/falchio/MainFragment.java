@@ -1,7 +1,6 @@
 package ru.skillsnet.falchio;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;

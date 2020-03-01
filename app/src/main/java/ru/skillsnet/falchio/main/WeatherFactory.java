@@ -1,11 +1,10 @@
 package ru.skillsnet.falchio.main;
 
 import android.content.Context;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.concurrent.ExecutionException;
 
+import java.util.concurrent.ExecutionException;
 
 import ru.skillsnet.falchio.R;
 import ru.skillsnet.falchio.data.Clouds;
@@ -16,7 +15,6 @@ import ru.skillsnet.falchio.data.Temperature;
 import ru.skillsnet.falchio.data.Time;
 import ru.skillsnet.falchio.data.Weather;
 import ru.skillsnet.falchio.data.Wind;
-import ru.skillsnet.falchio.parsers.DownloadImageTask;
 import ru.skillsnet.falchio.parsers.JsonTask;
 import ru.skillsnet.falchio.parsers.OpenWeatherJsonJsonParser;
 
@@ -66,10 +64,10 @@ public class WeatherFactory implements GlobalConstants {
                 String url = OW_DOMAIN + this.getUserLocation() + OW_API;
                 String jsonStringFromHttp = null;
 
-                // запрос объекта JSON с url в виде строки
-//                try {
+//                 запрос объекта JSON с url в виде строки
+                try {
 //                     запрашиваем данные по апи от OpenWeather, пытаемся получить JSON объект строкой.
-//                    jsonStringFromHttp = new JsonTask().execute(url).get();
+                    jsonStringFromHttp = new JsonTask().execute(url).get();
 
                     // на случай если не удалось получить JSON объект строкой
                     if (jsonStringFromHttp==null) {
@@ -85,10 +83,10 @@ public class WeatherFactory implements GlobalConstants {
 
                   //запрашиваем создание объекта DataWeather из полученной строки
                     dataWeather = new OpenWeatherJsonJsonParser(jsonStringFromHttp).getDataWeather();
-//
-//                } catch (ExecutionException | InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+
+                } catch (ExecutionException | InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 break;
             case (YANDEX):
