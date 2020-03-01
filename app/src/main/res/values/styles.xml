@@ -18,4 +18,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppLightTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">#ffb84d</item>
+        <item name="textAppearanceButton">@style/TextAppearance.AppCompat.SearchResult.Title</item>
+    </style>
+
 </resources>

@@ -16,11 +16,10 @@
     <ImageView
         android:id="@+id/weather_icon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="192dp"
         android:contentDescription="@string/weatherIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rain"
         tools:ignore="MissingConstraints" />
 
     <TextView

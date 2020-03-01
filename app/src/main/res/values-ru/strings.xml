@@ -23,10 +23,11 @@
     <string name="no_city">Город не найден</string>
     <string name="temperature">"Температура: "</string>
     <string name="max_temp">"Макс. температура: "</string>
-    <string name="speed_weather">Скорость ветра</string>
-    <string name="temp_min">Мин. температура</string>
+    <string name="speed_weather">"Скорость ветра: "</string>
+    <string name="temp_min">"Мин. температура: "</string>
     <string name="feels_like">"Ощущается как: "</string>
-    <string name="pressure">Атм. давление</string>
+    <string name="pressure">"Атм. давление: "</string>
     <string name="wind_direction">"Направление ветра: "</string>
     <string name="visibility">"Видимость: "</string>
+    <string name="temp_temperature">Обновление</string>
 </resources>

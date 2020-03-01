@@ -1,6 +1,6 @@
 package ru.skillsnet.falchio.data;
 
-public interface OpenWeatherConst {
+public interface OpenWeatherJsonConst {
     //Location class
     String COORDINATE = "coord";
     String LONGITUDE = "lon";

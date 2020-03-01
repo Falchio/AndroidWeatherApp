@@ -1,5 +1,6 @@
 package ru.skillsnet.falchio.main;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.content.Intent;
@@ -21,6 +22,11 @@ public class SelectCity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_city);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         userLocation = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString("location",getResources().getString(R.string.default_user_location));

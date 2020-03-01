@@ -1,6 +1,7 @@
 package ru.skillsnet.falchio.main;
 
 import android.content.Context;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
@@ -15,8 +16,9 @@ import ru.skillsnet.falchio.data.Temperature;
 import ru.skillsnet.falchio.data.Time;
 import ru.skillsnet.falchio.data.Weather;
 import ru.skillsnet.falchio.data.Wind;
+import ru.skillsnet.falchio.parsers.DownloadImageTask;
 import ru.skillsnet.falchio.parsers.JsonTask;
-import ru.skillsnet.falchio.parsers.OpenWeatherJsonParser;
+import ru.skillsnet.falchio.parsers.OpenWeatherJsonJsonParser;
 
 public class WeatherFactory implements GlobalConstants {
     private String TAG = this.getClass().getSimpleName();
@@ -82,7 +84,7 @@ public class WeatherFactory implements GlobalConstants {
                     }
 
                   //запрашиваем создание объекта DataWeather из полученной строки
-                    dataWeather = new OpenWeatherJsonParser(jsonStringFromHttp).getDataWeather();
+                    dataWeather = new OpenWeatherJsonJsonParser(jsonStringFromHttp).getDataWeather();
 
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();

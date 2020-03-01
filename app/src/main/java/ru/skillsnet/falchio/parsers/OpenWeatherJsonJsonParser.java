@@ -7,13 +7,13 @@ import org.json.JSONObject;
 import ru.skillsnet.falchio.data.Clouds;
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.data.Location;
-import ru.skillsnet.falchio.data.OpenWeatherConst;
+import ru.skillsnet.falchio.data.OpenWeatherJsonConst;
 import ru.skillsnet.falchio.data.Temperature;
 import ru.skillsnet.falchio.data.Time;
 import ru.skillsnet.falchio.data.Weather;
 import ru.skillsnet.falchio.data.Wind;
 
-public class OpenWeatherJsonParser implements OpenWeatherConst {
+public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
     private String jsonStringHttp;
 
     public String getJsonStringHttp() {
@@ -24,7 +24,7 @@ public class OpenWeatherJsonParser implements OpenWeatherConst {
         this.jsonStringHttp = jsonStringHttp;
     }
 
-    public OpenWeatherJsonParser(String jsonStringHttp) {
+    public OpenWeatherJsonJsonParser(String jsonStringHttp) {
         this.jsonStringHttp = jsonStringHttp;
     }
 
