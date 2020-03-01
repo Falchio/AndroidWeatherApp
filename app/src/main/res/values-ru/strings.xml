@@ -29,5 +29,6 @@
     <string name="pressure">"Атм. давление: "</string>
     <string name="wind_direction">"Направление ветра: "</string>
     <string name="visibility">"Видимость: "</string>
-    <string name="temp_temperature">Обновление</string>
+    <string name="temp_temperature">Обновление…</string>
+    <string name="use_dark_theme">Темная тема</string>
 </resources>

@@ -40,6 +40,7 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
                 .getString("location", getResources().getString(R.string.default_user_location));
@@ -53,7 +54,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
         weatherIcon = rootView.findViewById(R.id.weather_icon);

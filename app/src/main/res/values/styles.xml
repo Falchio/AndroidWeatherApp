@@ -12,13 +12,8 @@
 
     </style>
 
-    <style name="MyLightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#2F4F4F</item>
-        <item name="colorPrimaryDark">#FFEBCD</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
     <style name="AppLightTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimaryDark">#c88819</item>
         <item name="colorPrimary">#ffb84d</item>
         <item name="textAppearanceButton">@style/TextAppearance.AppCompat.SearchResult.Title</item>
     </style>

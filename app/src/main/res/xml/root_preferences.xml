@@ -39,5 +39,10 @@
             android:defaultValue="true"/>
     </PreferenceCategory>
 
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="switch_dark_theme"
+        android:title="@string/use_dark_theme" />
+
 
 </PreferenceScreen>

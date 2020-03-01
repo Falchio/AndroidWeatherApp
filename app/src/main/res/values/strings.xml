@@ -27,7 +27,7 @@
     <string name="hint_select_location">select location please</string>
     <string name="location_confirm">Confirm</string>
 
-    <string name="temp_temperature">Updating...</string>
+    <string name="temp_temperature">Updating…</string>
     <string name="celsius" translatable="false">℃</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -42,6 +42,7 @@
     <string name="pressure">"Atm. pressure: "</string>
     <string name="wind_direction">"Direction of the wind: "</string>
     <string name="visibility">Visibility: </string>
+    <string name="use_dark_theme">Use dark theme</string>
 
 
 </resources>

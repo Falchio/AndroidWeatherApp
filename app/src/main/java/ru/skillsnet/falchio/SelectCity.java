@@ -1,4 +1,4 @@
-package ru.skillsnet.falchio.main;
+package ru.skillsnet.falchio;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
-import ru.skillsnet.falchio.MainActivity;
-import ru.skillsnet.falchio.R;
+import ru.skillsnet.falchio.decor.AppStyle;
 
-public class SelectCity extends AppCompatActivity {
+public class SelectCity extends AppStyle {
     private String userLocation;
     private SharedPreferences sharedPreferences;
 

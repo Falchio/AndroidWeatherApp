@@ -67,9 +67,9 @@ public class WeatherFactory implements GlobalConstants {
                 String jsonStringFromHttp = null;
 
                 // запрос объекта JSON с url в виде строки
-                try {
-                    // запрашиваем данные по апи от OpenWeather, пытаемся получить JSON объект строкой.
-                    jsonStringFromHttp = new JsonTask().execute(url).get();
+//                try {
+//                     запрашиваем данные по апи от OpenWeather, пытаемся получить JSON объект строкой.
+//                    jsonStringFromHttp = new JsonTask().execute(url).get();
 
                     // на случай если не удалось получить JSON объект строкой
                     if (jsonStringFromHttp==null) {
@@ -85,10 +85,10 @@ public class WeatherFactory implements GlobalConstants {
 
                   //запрашиваем создание объекта DataWeather из полученной строки
                     dataWeather = new OpenWeatherJsonJsonParser(jsonStringFromHttp).getDataWeather();
-
-                } catch (ExecutionException | InterruptedException e) {
-                    e.printStackTrace();
-                }
+//
+//                } catch (ExecutionException | InterruptedException e) {
+//                    e.printStackTrace();
+//                }
 
                 break;
             case (YANDEX):

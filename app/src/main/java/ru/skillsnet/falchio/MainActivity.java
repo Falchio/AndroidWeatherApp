@@ -1,9 +1,8 @@
 package ru.skillsnet.falchio;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +10,9 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -19,11 +21,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import ru.skillsnet.falchio.data.GlobalConstants;
-import ru.skillsnet.falchio.main.SelectCity;
-import ru.skillsnet.falchio.main.SettingsActivity;
+import ru.skillsnet.falchio.decor.AppStyle;
 
 
-public class MainActivity extends AppCompatActivity implements GlobalConstants {
+public class MainActivity extends AppStyle implements GlobalConstants {
+    private static final int SETTING_CODE = 88;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,12 @@ public class MainActivity extends AppCompatActivity implements GlobalConstants {
         super.onResume();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==SETTING_CODE) recreate();
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
@@ -45,13 +53,22 @@ public class MainActivity extends AppCompatActivity implements GlobalConstants {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.button_menu_settings:
-                Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(settingIntent);
+                Intent settingIntent = new Intent(MainActivity.this, DSetting.class);
+                startActivityForResult(settingIntent, SETTING_CODE);;
                 return true;
             case R.id.button_menu_select_city:
                 Intent selectIntent = new Intent(MainActivity.this, SelectCity.class);
                 startActivity(selectIntent);
             case R.id.button_menu_about:
+                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.fragment_main),"Перейти к инфо о программе?", Snackbar.LENGTH_LONG);
+                mySnackbar.setAction("Перейти", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent selectIntent = new Intent(MainActivity.this, About.class);
+                        startActivity(selectIntent);
+                    }
+                });
+                mySnackbar.show();
                 return true;
             case R.id.button_menu_quit:
                 finish();
