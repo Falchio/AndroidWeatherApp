@@ -119,11 +119,19 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
             JSONObject cloudsJsonObject = readerJson.getJSONObject(CLOUDS);
             JSONObject cloudsJsonMain = readerJson.getJSONObject(MAIN_TEMPERATURE);
 
+            //не у всех городов есть поле VISIBILITY
+            int visibility;
+            if (readerJson.has(VISIBILITY)){
+                visibility=readerJson.getInt(VISIBILITY);
+            } else {
+                visibility=3000;
+            }
+
             clouds = new Clouds(
                     cloudsJsonObject.getInt(CLOUDS_ALL),
                     cloudsJsonMain.getInt(PRESSURE),
                     cloudsJsonMain.getInt(HUMIDITY),
-                    readerJson.getInt(VISIBILITY)
+                    visibility
             );
         } catch (JSONException e){
             e.printStackTrace();
