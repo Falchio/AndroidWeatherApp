@@ -1,6 +1,7 @@
 package ru.skillsnet.falchio.main;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -71,14 +72,8 @@ public class WeatherFactory implements GlobalConstants {
 
                     // на случай если не удалось получить JSON объект строкой
                     if (jsonStringFromHttp==null) {
-                        Toast.makeText(this.getContext(), R.string.no_connection + OPEN_WEATHER, Toast.LENGTH_SHORT ).show();
-                        return new DataWeather(
-                                new Location(),
-                                new Time(),
-                                new Temperature(),
-                                new Clouds(),
-                                new Weather(),
-                                new Wind());
+                        Toast.makeText(this.getContext(), R.string.no_connection + OPEN_WEATHER, Toast.LENGTH_SHORT).show();
+                        return new DataWeather();
                     }
 
                   //запрашиваем создание объекта DataWeather из полученной строки

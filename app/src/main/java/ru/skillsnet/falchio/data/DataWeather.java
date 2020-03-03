@@ -19,6 +19,15 @@ public class DataWeather {
         this.wind = wind;
     }
 
+    public DataWeather(){
+        this.location = new Location();
+        this.time = new Time();
+        this.temperature = new Temperature();
+        this.clouds = new Clouds();
+        this.weather = new Weather();
+        this.wind = new Wind();
+    }
+
     public Location getLocation() {
         return location;
     }

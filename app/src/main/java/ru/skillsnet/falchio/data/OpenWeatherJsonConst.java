@@ -42,4 +42,9 @@ public interface OpenWeatherJsonConst {
     String SUNSET_TIME ="sunset";
     String TIME_ZONE ="timezone";
 
+    //для проверки на наличие кода 404 с openweather когда город не найден
+    String COD = "cod";
+    String MESSAGE = "message";
+    String NOT_FOUND = "404";
+
 }

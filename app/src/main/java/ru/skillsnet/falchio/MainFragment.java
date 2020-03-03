@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,6 @@ import android.widget.Toast;
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.WeatherFactory;
 import ru.skillsnet.falchio.parsers.DownloadImageTask;
-
 import static ru.skillsnet.falchio.data.GlobalConstants.OPEN_WEATHER;
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE_END;
@@ -44,8 +44,6 @@ public class MainFragment extends Fragment {
         userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
                 .getString("location", getResources().getString(R.string.default_user_location));
         Toast.makeText(getContext(), userLocation, Toast.LENGTH_LONG).show();
-
-
     }
 
 

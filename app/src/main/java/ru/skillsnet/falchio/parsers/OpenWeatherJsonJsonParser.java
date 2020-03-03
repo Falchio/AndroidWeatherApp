@@ -1,9 +1,13 @@
 package ru.skillsnet.falchio.parsers;
 
+import android.content.res.Resources;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ru.skillsnet.falchio.R;
 import ru.skillsnet.falchio.data.Clouds;
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.data.Location;
@@ -12,6 +16,8 @@ import ru.skillsnet.falchio.data.Temperature;
 import ru.skillsnet.falchio.data.Time;
 import ru.skillsnet.falchio.data.Weather;
 import ru.skillsnet.falchio.data.Wind;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
     private String jsonStringHttp;
@@ -34,6 +40,14 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
 
         try {
             readerJson = new JSONObject(getJsonStringHttp());
+
+            if(readerJson.getString(COD).equals(NOT_FOUND)){ // город не найден
+                dataWeather = new DataWeather();
+                String message = readerJson.getString(MESSAGE);
+                dataWeather.getWeather().setDescription(message);
+
+                return dataWeather;
+            }
 
             dataWeather = new DataWeather(
                     getLocation(readerJson),

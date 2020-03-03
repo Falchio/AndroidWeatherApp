@@ -43,6 +43,7 @@
     <string name="wind_direction">"Direction of the wind: "</string>
     <string name="visibility">Visibility: </string>
     <string name="use_dark_theme">Use dark theme</string>
+    <string name="location_not_found">Location not found</string>
 
 
 </resources>
