@@ -27,7 +27,10 @@ public class JsonTask extends AsyncTask<String, String, String> {
             connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setReadTimeout(10000);
+
+            Log.e("JsonTask", "doInBackground: начинается подключение");
             connection.connect();
+            Log.e("JsonTask", "doInBackground: подключение выполнено");
 
             InputStream stream = connection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(stream));

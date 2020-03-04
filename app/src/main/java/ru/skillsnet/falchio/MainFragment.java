@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,18 +55,31 @@ public class MainFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
         weatherIcon = rootView.findViewById(R.id.weather_icon);
-        setWeatherText(); //Устанавливаем значение температурного табло
+
+        final Handler handler = new Handler();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                weather = new WeatherFactory(
+                        getContext(),
+                        OPEN_WEATHER,
+                        userLocation
+                ).getDataWeather();
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        setWeatherText();
+                    }
+                });
+            }
+        }).start();
+//        setWeatherText(); //Устанавливаем значение температурного табло
 
         return rootView;
     }
 
     private void setWeatherText() {
-
-        weather = new WeatherFactory(
-                getContext(),
-                OPEN_WEATHER,
-                userLocation
-        ).getDataWeather();
 
         StringBuilder forecastMessage = new StringBuilder();
         forecastMessage.append(

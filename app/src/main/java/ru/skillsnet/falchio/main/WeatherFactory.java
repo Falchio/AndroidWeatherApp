@@ -1,21 +1,14 @@
 package ru.skillsnet.falchio.main;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 
 import java.util.concurrent.ExecutionException;
 
 import ru.skillsnet.falchio.R;
-import ru.skillsnet.falchio.data.Clouds;
 import ru.skillsnet.falchio.data.GlobalConstants;
 import ru.skillsnet.falchio.data.DataWeather;
-import ru.skillsnet.falchio.data.Location;
-import ru.skillsnet.falchio.data.Temperature;
-import ru.skillsnet.falchio.data.Time;
-import ru.skillsnet.falchio.data.Weather;
-import ru.skillsnet.falchio.data.Wind;
 import ru.skillsnet.falchio.parsers.JsonTask;
 import ru.skillsnet.falchio.parsers.OpenWeatherJsonJsonParser;
 
