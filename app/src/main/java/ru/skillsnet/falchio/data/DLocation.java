@@ -1,13 +1,13 @@
 package ru.skillsnet.falchio.data;
 
-public class Location {
+public class DLocation {
     private double coordLat;
     private double coordLon;
     private String country;
     private int cityId;
     private String cityName;
 
-    public Location( double coordLon, double coordLat, String country, int cityId, String cityName) {
+    public DLocation(double coordLon, double coordLat, String country, int cityId, String cityName) {
         this.coordLon = coordLon;
         this.coordLat = coordLat;
         this.country = country;
@@ -15,7 +15,7 @@ public class Location {
         this.cityName = cityName;
     }
 
-    public Location(){
+    public DLocation(){
         this.coordLat = 0;
         this.coordLon = 0;
         this.country = "Country not defined";

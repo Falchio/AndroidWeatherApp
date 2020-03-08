@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ru.skillsnet.falchio.data.DataWeather;
+import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.WeatherFactory;
 import ru.skillsnet.falchio.parsers.DownloadImageTask;
 import static ru.skillsnet.falchio.data.GlobalConstants.OPEN_WEATHER;
@@ -32,6 +33,7 @@ public class MainFragment extends Fragment {
     private String userLocation;
     private TextView temperatureTextView;
     private ImageView weatherIcon;
+    private DLiveData liveData = new DLiveData();
 
 
     public MainFragment() {
@@ -45,6 +47,8 @@ public class MainFragment extends Fragment {
         userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
                 .getString("location", getResources().getString(R.string.default_user_location));
         Toast.makeText(getContext(), userLocation, Toast.LENGTH_LONG).show();
+
+        getLifecycle().addObserver(liveData);
     }
 
 

@@ -21,7 +21,7 @@
 
 
         <EditTextPreference
-            app:key="location"
+            app:key="DLocation"
             app:title="@string/user_location_title"
             android:defaultValue="@string/default_user_location"
             app:useSimpleSummaryProvider="true" />

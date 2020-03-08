@@ -49,7 +49,7 @@ public class SelectCity extends AppStyle {
                 editor.commit();
 
                 Intent locationIntent = new Intent(SelectCity.this, MainActivity.class);
-                locationIntent.putExtra("Location", userLocation);
+                locationIntent.putExtra("DLocation", userLocation);
 
                 startActivity(locationIntent);
                 finish();

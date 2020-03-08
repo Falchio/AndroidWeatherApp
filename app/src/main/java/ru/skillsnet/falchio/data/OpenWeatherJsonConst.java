@@ -1,7 +1,7 @@
 package ru.skillsnet.falchio.data;
 
 public interface OpenWeatherJsonConst {
-    //Location class
+    //DLocation class
     String COORDINATE = "coord";
     String LONGITUDE = "lon";
     String LATITUDE ="lat";
@@ -36,7 +36,7 @@ public interface OpenWeatherJsonConst {
     String WIND_SPEED ="speed";
     String WIND_DEGREES ="deg";
 
-    //Time
+    //DTime
     String DATA_TIME ="dt";
     String SUNRISE_TIME ="sunrise";
     String SUNSET_TIME ="sunset";

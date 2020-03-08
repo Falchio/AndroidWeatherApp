@@ -1,23 +1,17 @@
 package ru.skillsnet.falchio.parsers;
 
-import android.content.res.Resources;
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ru.skillsnet.falchio.R;
 import ru.skillsnet.falchio.data.Clouds;
+import ru.skillsnet.falchio.data.DLocation;
+import ru.skillsnet.falchio.data.DTime;
 import ru.skillsnet.falchio.data.DataWeather;
-import ru.skillsnet.falchio.data.Location;
 import ru.skillsnet.falchio.data.OpenWeatherJsonConst;
 import ru.skillsnet.falchio.data.Temperature;
-import ru.skillsnet.falchio.data.Time;
 import ru.skillsnet.falchio.data.Weather;
 import ru.skillsnet.falchio.data.Wind;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
     private String jsonStringHttp;
@@ -66,13 +60,13 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
     }
 
     //сделать так чтобы в случае ошибки использовался конструктор по умолчанию, на случай ошибок, чтобы обеспечить хоть какую-нибудь функциональность.
-    private Location getLocation(JSONObject readerJson) {
-        Location location;
+    private DLocation getLocation(JSONObject readerJson) {
+        DLocation DLocation;
         try{
             JSONObject coordJson = readerJson.getJSONObject(COORDINATE);
             JSONObject sysJson = readerJson.getJSONObject(SYSTEM);
 
-            location = new Location(
+            DLocation = new DLocation(
                     coordJson.getDouble(LONGITUDE),
                     coordJson.getDouble(LATITUDE),
                     sysJson.getString(COUNTRY),
@@ -82,10 +76,10 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
 
         }catch (JSONException e){
             e.printStackTrace();
-            location = new Location();
+            DLocation = new DLocation();
         }
 
-        return location;
+        return DLocation;
     }
 
     private Weather getWeather(JSONObject readerJson) {
@@ -170,12 +164,12 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
         return wind;
     }
 
-    private Time getTime(JSONObject readerJson) {
-        Time time;
+    private DTime getTime(JSONObject readerJson) {
+        DTime DTime;
 
         try {
             JSONObject timeJsonSys = readerJson.getJSONObject(SYSTEM);
-            time = new Time(
+            DTime = new DTime(
                     timeJsonSys.getLong(SUNRISE_TIME),
                     timeJsonSys.getLong(SUNSET_TIME),
                     readerJson.getLong(TIME_ZONE),
@@ -184,9 +178,9 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
 
         }catch (JSONException e){
             e.printStackTrace();
-            time = new Time();
+            DTime = new DTime();
         }
-        return time;
+        return DTime;
     }
 
 }

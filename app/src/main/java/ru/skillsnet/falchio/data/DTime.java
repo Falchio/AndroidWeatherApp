@@ -1,20 +1,20 @@
 package ru.skillsnet.falchio.data;
 
-public class Time {
+public class DTime {
 
     private long sunriseTime;
     private long sunsetTime;
     private long timezone;
     private long dataTime;
 
-    public Time(long sunriseTime, long sunsetTime, long timezone, long dataTime) {
+    public DTime(long sunriseTime, long sunsetTime, long timezone, long dataTime) {
         this.sunriseTime = sunriseTime;
         this.sunsetTime = sunsetTime;
         this.timezone = timezone;
         this.dataTime = dataTime;
     }
 
-    public Time() {
+    public DTime() {
         this.sunriseTime = 0;
         this.sunsetTime = 0;
         this.timezone = 0;
