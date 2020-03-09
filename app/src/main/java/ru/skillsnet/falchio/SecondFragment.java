@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Objects;
+
 import ru.skillsnet.falchio.decor.OtherCityAdapter;
 
 
@@ -51,9 +53,9 @@ public class SecondFragment extends Fragment {
 
     private void initRecyclerView(){
         String[] otherCity = getResources().getStringArray(R.array.other_city);
-        RecyclerView otherCityRecView = getView().findViewById(R.id.other_city_recycler);
+        RecyclerView otherCityRecView = Objects.requireNonNull(getView()).findViewById(R.id.other_city_recycler);
 
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator));
         otherCityRecView.addItemDecoration(itemDecoration);
 

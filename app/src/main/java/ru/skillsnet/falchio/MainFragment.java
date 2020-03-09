@@ -5,22 +5,20 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.preference.PreferenceManager;
+import androidx.lifecycle.Observer;
 
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.DLiveData;
-import ru.skillsnet.falchio.main.WeatherFactory;
+import ru.skillsnet.falchio.main.DViewModel;
 import ru.skillsnet.falchio.parsers.DownloadImageTask;
-import static ru.skillsnet.falchio.data.GlobalConstants.OPEN_WEATHER;
+
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE_END;
 
@@ -33,7 +31,8 @@ public class MainFragment extends Fragment {
     private String userLocation;
     private TextView temperatureTextView;
     private ImageView weatherIcon;
-    private DLiveData liveData = new DLiveData();
+    private final DLiveData liveData = new DLiveData();
+    private final DViewModel model = liveData.getViewModel();
 
 
     public MainFragment() {
@@ -44,11 +43,11 @@ public class MainFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
-                .getString("location", getResources().getString(R.string.default_user_location));
-        Toast.makeText(getContext(), userLocation, Toast.LENGTH_LONG).show();
-
+//        userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
+//                .getString("location", getResources().getString(R.string.default_user_location));
+//        Toast.makeText(getContext(), userLocation, Toast.LENGTH_LONG).show();
         getLifecycle().addObserver(liveData);
+
     }
 
 
@@ -60,30 +59,17 @@ public class MainFragment extends Fragment {
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
         weatherIcon = rootView.findViewById(R.id.weather_icon);
 
-        final Handler handler = new Handler();
-        new Thread(new Runnable() {
+        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
             @Override
-            public void run() {
-                weather = new WeatherFactory(
-                        getContext(),
-                        OPEN_WEATHER,
-                        userLocation
-                ).getDataWeather();
-
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        setWeatherText();
-                    }
-                });
+            public void onChanged(DataWeather dataWeather) {
+                setWeatherText(dataWeather);
             }
-        }).start();
-//        setWeatherText(); //Устанавливаем значение температурного табло
+        });
 
         return rootView;
     }
 
-    private void setWeatherText() {
+    private void setWeatherText(DataWeather weather) {
 
         StringBuilder forecastMessage = new StringBuilder();
         forecastMessage.append(

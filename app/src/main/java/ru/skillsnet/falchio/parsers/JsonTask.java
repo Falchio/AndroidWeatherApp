@@ -8,12 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class JsonTask extends AsyncTask<String, String, String> {
 

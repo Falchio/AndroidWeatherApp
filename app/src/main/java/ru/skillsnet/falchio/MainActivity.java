@@ -33,11 +33,6 @@ public class MainActivity extends AppStyle implements GlobalConstants {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==SETTING_CODE) recreate();

@@ -32,48 +32,24 @@ public class DataWeather {
         return DLocation;
     }
 
-    public void setDLocation(DLocation DLocation) {
-        this.DLocation = DLocation;
-    }
-
     public DTime getDTime() {
         return DTime;
-    }
-
-    public void setDTime(DTime DTime) {
-        this.DTime = DTime;
     }
 
     public Temperature getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Temperature temperature) {
-        this.temperature = temperature;
-    }
-
     public Clouds getClouds() {
         return clouds;
-    }
-
-    public void setClouds(Clouds clouds) {
-        this.clouds = clouds;
     }
 
     public Weather getWeather() {
         return weather;
     }
 
-    public void setWeather(Weather weather) {
-        this.weather = weather;
-    }
-
     public Wind getWind() {
         return wind;
-    }
-
-    public void setWind(Wind wind) {
-        this.wind = wind;
     }
 
 

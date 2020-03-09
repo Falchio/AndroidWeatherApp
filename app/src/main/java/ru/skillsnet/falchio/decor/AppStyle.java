@@ -20,11 +20,6 @@ public abstract class AppStyle extends AppCompatActivity {
             setTheme(R.style.AppLightTheme);
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
     // Чтение настроек
     protected boolean isDarkTheme() {
         // Работаем через специальный класс сохранения и чтения настроек

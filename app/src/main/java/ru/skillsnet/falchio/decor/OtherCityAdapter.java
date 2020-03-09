@@ -14,7 +14,7 @@ import ru.skillsnet.falchio.R;
 // Адаптер
 public class OtherCityAdapter extends RecyclerView.Adapter<OtherCityAdapter.ViewHolder> {
 
-    private String[] dataSource;
+    private final String[] dataSource;
 
     // Передаем в конструктор источник данных
     // В нашем случае это массив, но может быть и запросом к БД
@@ -53,8 +53,8 @@ public class OtherCityAdapter extends RecyclerView.Adapter<OtherCityAdapter.View
     // Этот класс хранит связь между данными и элементами View
     // Сложные данные могут потребовать несколько View на
     // один пункт списка
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView textView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -7,9 +7,10 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
+import java.util.Objects;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-    ImageView bmImage;
+    private final ImageView bmImage;
 
     public DownloadImageTask(ImageView bmImage) {
         this.bmImage = bmImage;
@@ -21,7 +22,7 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         try(InputStream in = new java.net.URL(urlImage).openStream()) {
             icon = BitmapFactory.decodeStream(in);
         } catch (Exception e) {
-            Log.e("DOWNLOAD IMAGE ERROR", e.getMessage());
+            Log.e("DOWNLOAD IMAGE ERROR", Objects.requireNonNull(e.getMessage()));
             e.printStackTrace();
         }
         return icon;

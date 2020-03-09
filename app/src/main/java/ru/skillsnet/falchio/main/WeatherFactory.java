@@ -56,7 +56,7 @@ public class WeatherFactory implements GlobalConstants {
             case (OPEN_WEATHER):
 
                 String url = OW_DOMAIN + this.getUserLocation() + OW_API;
-                String jsonStringFromHttp = null;
+                String jsonStringFromHttp;
 
 //                 запрос объекта JSON с url в виде строки
                 try {

@@ -50,7 +50,7 @@ public class DSetting extends AppStyle {
     }
 
     private class CheckBoxListener implements View.OnClickListener {
-        private String stringKey;
+        private final String stringKey;
 
         public CheckBoxListener(String stringKey){
             this.stringKey=stringKey;

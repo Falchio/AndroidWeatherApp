@@ -25,10 +25,6 @@ public class Clouds {
         return visibility;
     }
 
-    public void setVisibility(int visibility) {
-        this.visibility = visibility;
-    }
-
 
     public int getAtmPressure(){
         int atmPressure;
@@ -41,23 +37,12 @@ public class Clouds {
         return clouds;
     }
 
-    public void setClouds(int clouds) {
-        this.clouds = clouds;
-    }
-
     public int getPressure() {
         return pressure;
-    }
-
-    public void setPressure(int pressure) {
-        this.pressure = pressure;
     }
 
     public int getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
-        this.humidity = humidity;
-    }
 }
