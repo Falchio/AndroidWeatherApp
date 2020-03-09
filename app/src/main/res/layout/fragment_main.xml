@@ -12,29 +12,106 @@
         android:layout_height="wrap_content"
         tools:context=".MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/weather_icon"
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:contentDescription="@string/weatherIcon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:padding="8dp"
-        android:id="@+id/temperature_view_text"
-        style="@style/Widget.AppCompat.TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/temp_temperature"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weather_icon" />
+        <TextView
+            android:id="@+id/text_view_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_date"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_location" />
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/weatherIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_date"
+            android:src="@drawable/ic_01d"/>
+
+        <TextView
+            android:id="@+id/temperature_view_text"
+            style="@style/Widget.AppCompat.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:text="@string/temp_temperature"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weather_icon" />
+
+        <TextView
+            android:id="@+id/text_view_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="36sp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperature_view_text" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description">
+
+            <ImageView
+                android:id="@+id/image_feels_like"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/feels_like"
+                android:src="@drawable/ic_scarf" />
+            
+            <TextView
+                android:id="@+id/text_view_feels_like"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="24sp"/>
+
+            <ImageView
+                android:id="@+id/image_speed_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/wind"
+                android:src="@drawable/ic_wind"/>
+
+            <TextView
+                android:id="@+id/text_view_wind_speed"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="24sp"/>
+
+        </TableRow>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

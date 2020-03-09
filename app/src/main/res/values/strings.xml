@@ -44,6 +44,7 @@
     <string name="visibility">Visibility: </string>
     <string name="use_dark_theme">Use dark theme</string>
     <string name="location_not_found">Location not found</string>
+    <string name="wind">speed of wind</string>
 
 
 </resources>

@@ -14,13 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
-import ru.skillsnet.falchio.parsers.DownloadImageTask;
-
-import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
-import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE_END;
 
 
 /**
@@ -30,6 +29,11 @@ public class MainFragment extends Fragment {
     private DataWeather weather;
     private String userLocation;
     private TextView temperatureTextView;
+    private TextView feelsLikeText;
+    private TextView windSpeedText;
+    private TextView locationText;
+    private TextView descriptionText;
+    private TextView dateText;
     private ImageView weatherIcon;
     private final DLiveData liveData = new DLiveData();
     private final DViewModel model = liveData.getViewModel();
@@ -58,35 +62,58 @@ public class MainFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
         weatherIcon = rootView.findViewById(R.id.weather_icon);
-
-        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
-            @Override
-            public void onChanged(DataWeather dataWeather) {
-                setWeatherText(dataWeather);
-            }
-        });
+        locationText = rootView.findViewById(R.id.text_view_location);
+        feelsLikeText = rootView.findViewById(R.id.text_view_feels_like);
+        windSpeedText = rootView.findViewById(R.id.text_view_wind_speed);
+        descriptionText = rootView.findViewById(R.id.text_view_description);
+        dateText = rootView.findViewById(R.id.text_view_date);
 
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
+            @Override
+            public void onChanged(DataWeather dataWeather) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setWeatherText(dataWeather);
+                    }
+                }).start();
+            }
+        });
+    }
+
     private void setWeatherText(DataWeather weather) {
 
-        StringBuilder forecastMessage = new StringBuilder();
-        forecastMessage.append(
-                getString(R.string.temperature) + weather.getTemperature().getTemp() +
-                        "\n" + getString(R.string.temp_min) + weather.getTemperature().getTempMin() +
-                        "\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax() +
-                        "\n" + getString(R.string.feels_like) + weather.getTemperature().getTempFeelsLike() +
-                        "\n" + getString(R.string.pressure) + weather.getClouds().getAtmPressure() +
-                        "\n" + weather.getWeather().getDescription() +
-                        "\n" + getString(R.string.speed_weather) + weather.getWind().getWindSpeed() +
-                        "\n" + getString(R.string.wind_direction) + weather.getWind().getWindDirection() +
-                        "\n" + getString(R.string.visibility) + weather.getClouds().getVisibility());
-        temperatureTextView.setText(forecastMessage);
+//        StringBuilder forecastMessage = new StringBuilder();
+//        forecastMessage.append(
+//                getString(R.string.temperature) + weather.getTemperature().getTemp() +
+//                        "\n" + getString(R.string.temp_min) + weather.getTemperature().getTempMin() +
+//                        "\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax() +
+//                        "\n" + getString(R.string.feels_like) + weather.getTemperature().getTempFeelsLike() +
+//                        "\n" + getString(R.string.pressure) + weather.getClouds().getAtmPressure() +
+//                        "\n" + weather.getWeather().getDescription() +
+//                        "\n" + getString(R.string.speed_weather) + weather.getWind().getWindSpeed() +
+//                        "\n" + getString(R.string.wind_direction) + weather.getWind().getWindDirection() +
+//                        "\n" + getString(R.string.visibility) + weather.getClouds().getVisibility());
 
-        new DownloadImageTask(weatherIcon)
-                .execute(
-                        OW_IMAGE + weather.getWeather().getWeatherIcon() + OW_IMAGE_END);
+        temperatureTextView.setText(weather.getTemperature().getTemp() + " ℃");
+        locationText.setText(String.valueOf(weather.getDLocation().getCityName()));
+        feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()));
+        windSpeedText.setText(weather.getWind().getWindSpeed() + " м/с");
+        descriptionText.setText(weather.getWeather().getDescription());
+        Date date = new java.util.Date(weather.getDTime().getDataTime()*1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("E, d MMM YYYY HH:MM");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+4"));
+        dateText.setText(sdf.format(date));
+
+//        new DownloadImageTask(weatherIcon)
+//                .execute(
+//                        OW_IMAGE + weather.getWeather().getWeatherIcon() + OW_IMAGE_END);
     }
 
 }

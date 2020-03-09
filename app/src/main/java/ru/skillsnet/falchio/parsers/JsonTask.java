@@ -23,7 +23,7 @@ public class JsonTask extends AsyncTask<String, String, String> {
             final URL url = new URL(params[0]);
             connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setReadTimeout(10000);
+            connection.setReadTimeout(1000);
 
             Log.e("JsonTask", "doInBackground: начинается подключение");
             connection.connect();

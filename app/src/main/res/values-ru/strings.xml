@@ -31,4 +31,5 @@
     <string name="visibility">"Видимость: "</string>
     <string name="temp_temperature">Обновление…</string>
     <string name="use_dark_theme">Темная тема</string>
+    <string name="location_not_found">Местоположение не найдено</string>
 </resources>
