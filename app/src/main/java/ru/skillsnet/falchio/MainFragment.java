@@ -26,8 +26,6 @@ import ru.skillsnet.falchio.main.DViewModel;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
-    private DataWeather weather;
-    private String userLocation;
     private TextView temperatureTextView;
     private TextView feelsLikeText;
     private TextView windSpeedText;
@@ -45,11 +43,7 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-//        userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
-//                .getString("location", getResources().getString(R.string.default_user_location));
-//        Toast.makeText(getContext(), userLocation, Toast.LENGTH_LONG).show();
         getLifecycle().addObserver(liveData);
 
     }
@@ -77,30 +71,12 @@ public class MainFragment extends Fragment {
         model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
             @Override
             public void onChanged(DataWeather dataWeather) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setWeatherText(dataWeather);
-                    }
-                }).start();
+                setWeatherText(dataWeather);
             }
         });
     }
 
     private void setWeatherText(DataWeather weather) {
-
-//        StringBuilder forecastMessage = new StringBuilder();
-//        forecastMessage.append(
-//                getString(R.string.temperature) + weather.getTemperature().getTemp() +
-//                        "\n" + getString(R.string.temp_min) + weather.getTemperature().getTempMin() +
-//                        "\n" + getString(R.string.max_temp) + weather.getTemperature().getTempMax() +
-//                        "\n" + getString(R.string.feels_like) + weather.getTemperature().getTempFeelsLike() +
-//                        "\n" + getString(R.string.pressure) + weather.getClouds().getAtmPressure() +
-//                        "\n" + weather.getWeather().getDescription() +
-//                        "\n" + getString(R.string.speed_weather) + weather.getWind().getWindSpeed() +
-//                        "\n" + getString(R.string.wind_direction) + weather.getWind().getWindDirection() +
-//                        "\n" + getString(R.string.visibility) + weather.getClouds().getVisibility());
-
         temperatureTextView.setText(weather.getTemperature().getTemp() + " ℃");
         locationText.setText(String.valueOf(weather.getDLocation().getCityName()));
         feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()));

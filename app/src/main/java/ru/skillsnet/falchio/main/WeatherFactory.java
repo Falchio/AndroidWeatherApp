@@ -50,7 +50,7 @@ public class WeatherFactory implements GlobalConstants {
     }
 
     public DataWeather getDataWeather() {
-        DataWeather dataWeather = null;
+        DataWeather dataWeather = new DataWeather();
 
         switch (this.getDataSource()) {
             case (OPEN_WEATHER):
