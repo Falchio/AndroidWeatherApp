@@ -83,7 +83,7 @@ public class MainFragment extends Fragment {
         windSpeedText.setText(weather.getWind().getWindSpeed() + " м/с");
         descriptionText.setText(weather.getWeather().getDescription());
         Date date = new java.util.Date(weather.getDTime().getDataTime()*1000L);
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("E, d MMM YYYY HH:MM");
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+4"));
         dateText.setText(sdf.format(date));
 

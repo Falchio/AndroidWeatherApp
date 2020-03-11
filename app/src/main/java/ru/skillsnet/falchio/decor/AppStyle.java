@@ -24,7 +24,7 @@ public abstract class AppStyle extends AppCompatActivity {
     protected boolean isDarkTheme() {
         // Работаем через специальный класс сохранения и чтения настроек
         SharedPreferences sharedPref = getSharedPreferences(SETTINGS, MODE_PRIVATE);
-        return sharedPref.getBoolean(DARK_THEME, true);
+        return sharedPref.getBoolean(DARK_THEME, false);
     }
 
     // Сохранение настроек
