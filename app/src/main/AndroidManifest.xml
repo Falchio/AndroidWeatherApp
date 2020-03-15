@@ -29,7 +29,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-        </activity> <!-- android:theme="@style/DayNightTheme" -->
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
@@ -42,14 +43,6 @@
         <activity
             android:name=".SelectCity"
             android:label="@string/hint_select_location"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

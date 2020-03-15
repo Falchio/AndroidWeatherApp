@@ -1,21 +1,18 @@
 package ru.skillsnet.falchio;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Switch;
+
+import java.util.Objects;
 
 import ru.skillsnet.falchio.decor.AppStyle;
 
 public class DSetting extends AppStyle {
-    private final String CHECK_WIND = "Check_wind";
-    private final String CHECK_PRESSURE = "Check_pressure";
-
 
 
     @Override
@@ -23,16 +20,10 @@ public class DSetting extends AppStyle {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_d_setting);
 
-
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
-
-        Toolbar toolbar = findViewById(R.id.toolbar_sett);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (toolbar != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         }
 
 
@@ -42,19 +33,18 @@ public class DSetting extends AppStyle {
         CheckBox checkPressure = findViewById(R.id.checkbox_atm_pressure);
         Switch useDarkTheme = findViewById(R.id.switch_theme);
 
+        String CHECK_WIND = "Check_wind";
         checkWind.setChecked(sharedPref.getBoolean(CHECK_WIND,true));
+        String CHECK_PRESSURE = "Check_pressure";
         checkPressure.setChecked(sharedPref.getBoolean(CHECK_PRESSURE, true));
         useDarkTheme.setChecked(sharedPref.getBoolean(DARK_THEME,false));
 
         checkWind.setOnClickListener(new CheckBoxListener(CHECK_WIND));
         checkPressure.setOnClickListener(new CheckBoxListener(CHECK_PRESSURE));
 
-        useDarkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setDarkTheme(isChecked);
-                recreate();
-            }
+        useDarkTheme.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setDarkTheme(isChecked);
+            recreate();
         });
 
     }

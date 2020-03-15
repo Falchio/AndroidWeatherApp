@@ -26,6 +26,7 @@ public class JsonTask extends AsyncTask<String, String, String> {
             connection.setReadTimeout(1000);
 
             Log.e("JsonTask", "doInBackground: начинается подключение");
+
             connection.connect();
             Log.e("JsonTask", "doInBackground: подключение выполнено");
 
@@ -33,11 +34,11 @@ public class JsonTask extends AsyncTask<String, String, String> {
             reader = new BufferedReader(new InputStreamReader(stream));
 
             StringBuffer buffer = new StringBuffer();
-            String line = "";
+            String line;
 
             int i = 0;
             while ((line = reader.readLine()) != null) {
-                buffer.append(line + "\n");
+                buffer.append(line).append("\n");
             }
 
             return buffer.toString();
@@ -59,13 +60,11 @@ public class JsonTask extends AsyncTask<String, String, String> {
                 e.printStackTrace();
             }
         }
-//        return null;
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-
     }
 
 

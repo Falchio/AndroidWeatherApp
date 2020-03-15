@@ -32,7 +32,6 @@ public class MainFragment extends Fragment {
     private TextView locationText;
     private TextView descriptionText;
     private TextView dateText;
-    private ImageView weatherIcon;
     private final DLiveData liveData = new DLiveData();
     private final DViewModel model = liveData.getViewModel();
 
@@ -55,7 +54,7 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
-        weatherIcon = rootView.findViewById(R.id.weather_icon);
+        ImageView weatherIcon = rootView.findViewById(R.id.weather_icon);
         locationText = rootView.findViewById(R.id.text_view_location);
         feelsLikeText = rootView.findViewById(R.id.text_view_feels_like);
         windSpeedText = rootView.findViewById(R.id.text_view_wind_speed);
@@ -77,10 +76,10 @@ public class MainFragment extends Fragment {
     }
 
     private void setWeatherText(DataWeather weather) {
-        temperatureTextView.setText(weather.getTemperature().getTemp() + " ℃");
+        temperatureTextView.setText(weather.getTemperature().getTemp() + getString(R.string.celsius));
         locationText.setText(String.valueOf(weather.getDLocation().getCityName()));
         feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()));
-        windSpeedText.setText(weather.getWind().getWindSpeed() + " м/с");
+        windSpeedText.setText(weather.getWind().getWindSpeed() + getString(R.string.meters_per_second));
         descriptionText.setText(weather.getWeather().getDescription());
         Date date = new java.util.Date(weather.getDTime().getDataTime()*1000L);
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");

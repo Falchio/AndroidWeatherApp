@@ -6,11 +6,12 @@ import androidx.preference.PreferenceManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
+
+import java.util.Objects;
 
 import ru.skillsnet.falchio.decor.AppStyle;
 
@@ -23,17 +24,11 @@ public class SelectCity extends AppStyle {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_city);
 
-        Toolbar toolbar = findViewById(R.id.toolbar_select);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         if (toolbar != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         }
-
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
 
         userLocation = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString("location",getResources().getString(R.string.default_user_location));
@@ -48,22 +43,19 @@ public class SelectCity extends AppStyle {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         Button confirm = findViewById(R.id.confirm_location);
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userLocation =  autoCompleteTextView.getText().toString();
+        confirm.setOnClickListener(v -> {
+            userLocation =  autoCompleteTextView.getText().toString();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("location", userLocation);
-                editor.commit();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("location", userLocation);
+            editor.commit();
 
-                Intent locationIntent = new Intent(SelectCity.this, MainActivity.class);
-                locationIntent.putExtra("DLocation", userLocation);
+            Intent locationIntent = new Intent(SelectCity.this, MainActivity.class);
+            locationIntent.putExtra("DLocation", userLocation);
 
-                startActivity(locationIntent);
-                finish();
+            startActivity(locationIntent);
+            finish();
 
-            }
         });
 
 

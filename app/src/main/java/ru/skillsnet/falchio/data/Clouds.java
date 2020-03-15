@@ -5,7 +5,6 @@ public class Clouds {
     private int pressure;
     private int humidity;
     private int visibility;
-    private final double  RATIO = 0.75006375541921;
 
     public Clouds(int clouds, int pressure, int humidity, int visibility) {
         this.clouds = clouds;
@@ -28,8 +27,9 @@ public class Clouds {
 
     public int getAtmPressure(){
         int atmPressure;
-        double pressure = (double) this.getPressure();
-        atmPressure =(int) (pressure*RATIO);
+        double pressure = this.getPressure();
+        double RATIO = 0.75006375541921;
+        atmPressure =(int) (pressure* RATIO);
         return atmPressure;
     }
 
@@ -37,7 +37,7 @@ public class Clouds {
         return clouds;
     }
 
-    public int getPressure() {
+    private int getPressure() {
         return pressure;
     }
 

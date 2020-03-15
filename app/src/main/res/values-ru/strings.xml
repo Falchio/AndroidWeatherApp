@@ -2,34 +2,20 @@
 <resources>
     <!--  legends  -->
     <string name="title_activity_settings" >Настройки DWeather</string>
-    <string name="textView">Температура</string>
     <string name="weatherIcon">Значок погоды</string>
     <string name="atmPressureCheckBox">атмосферное давление</string>
     <string name="windCheckBox">скорость ветра</string>
     <string name="menu_button_about">О программе</string>
     <string name="menu_button_settings">Настроки</string>
     <string name="menu_button_quit">Выход</string>
-    <string name="display_setting">Настройка местоположения</string>
-    <string name="user_location_title">Ваше местоположение</string>
-    <string name="color_scheme_title">Вкл. темную тему</string>
-    <string name="color_sсheme_header">Оформление</string>
-    <string name="info_to_display">Информация для отображения</string>
     <string name="default_user_location">Москва</string>
     <string name="menu_button_select_city">Указать местоположение</string>
     <string name="hint_select_location">укажите местоположение</string>
     <string name="location_confirm">Подтвердить</string>
     <string name="no_connection">"Нет соединения с "</string>
-    <string name="no_country">страна не найдена</string>
-    <string name="no_city">Город не найден</string>
-    <string name="temperature">"Температура: "</string>
-    <string name="max_temp">"Макс. температура: "</string>
-    <string name="speed_weather">"Скорость ветра: "</string>
-    <string name="temp_min">"Мин. температура: "</string>
     <string name="feels_like">"Ощущается как: "</string>
-    <string name="pressure">"Атм. давление: "</string>
-    <string name="wind_direction">"Направление ветра: "</string>
-    <string name="visibility">"Видимость: "</string>
     <string name="temp_temperature">Обновление…</string>
     <string name="use_dark_theme">Темная тема</string>
-    <string name="location_not_found">Местоположение не найдено</string>
+    <string name="wind">скорость ветра</string>
+    <string name="meters_per_second">м/с</string>
 </resources>
