@@ -1,18 +1,23 @@
 package ru.skillsnet.falchio;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Switch;
-
+import android.widget.TextView;
 import java.util.Objects;
 
 import ru.skillsnet.falchio.decor.AppStyle;
+import ru.skillsnet.falchio.dialogs.OnDialogListener;
+import ru.skillsnet.falchio.dialogs.SelectLocationDialog;
 
 public class DSetting extends AppStyle {
+    String userLocation;
+    TextView loc;
 
 
     @Override
@@ -47,7 +52,22 @@ public class DSetting extends AppStyle {
             recreate();
         });
 
+        userLocation = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("location",getResources().getString(R.string.default_user_location));
+        loc = findViewById(R.id.select_loc);
+        loc.setText(userLocation);
+        loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectLocationDialog dialog = SelectLocationDialog.newInstance();
+                dialog.setOnDialogListener(dialogListener);
+                dialog.show(getSupportFragmentManager(),"Dialog");
+
+            }
+        });
     }
+
+
 
     private class CheckBoxListener implements View.OnClickListener {
         private final String stringKey;
@@ -70,4 +90,16 @@ public class DSetting extends AppStyle {
             }
         }
     }
+
+    private OnDialogListener dialogListener = new OnDialogListener() {
+
+        @Override
+        public void onDialogYes() {
+            userLocation = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                    .getString("location",getResources().getString(R.string.default_user_location));
+            loc.setText(userLocation);
+
+        }
+    };
+
 }

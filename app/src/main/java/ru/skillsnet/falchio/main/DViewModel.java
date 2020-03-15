@@ -26,7 +26,7 @@ public class DViewModel extends ViewModel {
         String userLocation= PreferenceManager.getDefaultSharedPreferences(getContext())
                 .getString("location",
                         getContext().getResources().getString(R.string.default_user_location));
-
+//        weatherMutableLiveData.setValue(new DataWeather());
         weatherMutableLiveData.setValue(new WeatherFactory(
                 getContext(),
                 OPEN_WEATHER,
