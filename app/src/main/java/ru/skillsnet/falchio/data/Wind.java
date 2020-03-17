@@ -9,6 +9,10 @@ public class Wind {
         this.windDeg = windDeg;
     }
 
+    public Wind(int windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
     public Wind() {
         this.windSpeed = -1;
         this.windDeg = 0;

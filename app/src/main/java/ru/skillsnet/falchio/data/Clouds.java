@@ -13,6 +13,12 @@ public class Clouds {
         this.visibility=visibility;
     }
 
+    public Clouds(int clouds, int pressure, int humidity) {
+        this.clouds = clouds;
+        this.pressure = pressure;
+        this.humidity = humidity;
+    }
+
     public Clouds(){
         this.clouds = -99;
         this.pressure = -99;

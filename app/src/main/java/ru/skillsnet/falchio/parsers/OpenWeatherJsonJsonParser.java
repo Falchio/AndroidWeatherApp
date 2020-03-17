@@ -128,19 +128,20 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
             JSONObject cloudsJsonMain = readerJson.getJSONObject(MAIN_TEMPERATURE);
 
             //не у всех городов есть поле VISIBILITY
-            int visibility;
+
             if (readerJson.has(VISIBILITY)){
-                visibility=readerJson.getInt(VISIBILITY);
+                clouds = new Clouds(
+                        cloudsJsonObject.getInt(CLOUDS_ALL),
+                        cloudsJsonMain.getInt(PRESSURE),
+                        cloudsJsonMain.getInt(HUMIDITY),
+                        readerJson.getInt(VISIBILITY));
             } else {
-                visibility=3000;
+                clouds = new Clouds(
+                        cloudsJsonObject.getInt(CLOUDS_ALL),
+                        cloudsJsonMain.getInt(PRESSURE),
+                        cloudsJsonMain.getInt(HUMIDITY));
             }
 
-            clouds = new Clouds(
-                    cloudsJsonObject.getInt(CLOUDS_ALL),
-                    cloudsJsonMain.getInt(PRESSURE),
-                    cloudsJsonMain.getInt(HUMIDITY),
-                    visibility
-            );
         } catch (JSONException e){
             e.printStackTrace();
             clouds = new Clouds();
@@ -154,9 +155,15 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
 
         try {
             JSONObject windJson = readerJson.getJSONObject(WIND);
-            wind = new Wind(
-                    windJson.getInt(WIND_SPEED),
-                    windJson.getInt(WIND_DEGREES));
+            // не у всех городов есть направление ветра
+            if (windJson.has(WIND_DEGREES)){
+                wind = new Wind(
+                        windJson.getInt(WIND_SPEED),
+                        windJson.getInt(WIND_DEGREES));
+            } else {
+                wind = new Wind(windJson.getInt(WIND_SPEED));
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
             wind = new Wind();
