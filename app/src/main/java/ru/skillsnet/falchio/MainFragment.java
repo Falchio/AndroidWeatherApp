@@ -20,6 +20,10 @@ import java.util.Date;
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
+import ru.skillsnet.falchio.parsers.DownloadImageTask;
+
+import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
+import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE_END;
 
 
 /**
@@ -67,28 +71,31 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
-            @Override
-            public void onChanged(DataWeather dataWeather) {
-                setWeatherText(dataWeather);
-            }
+            model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
+                @Override
+                public void onChanged(DataWeather dataWeather) {
+                    setWeatherText(dataWeather);
+                }
         });
+
     }
 
     private void setWeatherText(DataWeather weather) {
         temperatureTextView.setText(weather.getTemperature().getTemp() + getString(R.string.celsius));
         locationText.setText(String.valueOf(weather.getDLocation().getCityName()));
-        feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()));
+        feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()) + getString(R.string.celsius));
         windSpeedText.setText(weather.getWind().getWindSpeed() + getString(R.string.meters_per_second));
         descriptionText.setText(weather.getWeather().getDescription());
         Date date = new java.util.Date(weather.getDTime().getDataTime()*1000L);
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+4"));
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
         dateText.setText(sdf.format(date));
 
-//        new DownloadImageTask(weatherIcon)
-//                .execute(
-//                        OW_IMAGE + weather.getWeather().getWeatherIcon() + OW_IMAGE_END);
+        ImageView weatherIcon = getActivity().findViewById(R.id.weather_icon);
+
+        new DownloadImageTask(weatherIcon)
+                .execute(
+                        OW_IMAGE + weather.getWeather().getWeatherIcon() + OW_IMAGE_END);
     }
 
 }

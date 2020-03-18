@@ -22,14 +22,14 @@
     <string name="location_confirm">Confirm</string>
 
     <string name="temp_temperature">Updating…</string>
-    <string name="celsius" translatable="false">℃</string>
+    <string name="celsius" translatable="false">" ℃"</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="no_connection">"No connection to "</string>
     <string name="feels_like">"Feels like: "</string>
     <string name="use_dark_theme">Use dark theme</string>
     <string name="wind">speed of wind</string>
-    <string name="meters_per_second">\" m/s\"</string>
+    <string name="meters_per_second">" m/s"</string>
     <string name="cancel">cancel</string>
     <string name="ok">ok</string>
 

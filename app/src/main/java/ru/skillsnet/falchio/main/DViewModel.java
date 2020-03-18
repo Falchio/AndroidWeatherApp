@@ -7,6 +7,7 @@ import androidx.preference.PreferenceManager;
 import ru.skillsnet.falchio.R;
 import ru.skillsnet.falchio.data.DataWeather;
 
+import static java.lang.Thread.sleep;
 import static ru.skillsnet.MyApplication.getContext;
 import static ru.skillsnet.falchio.data.GlobalConstants.OPEN_WEATHER;
 
@@ -23,6 +24,7 @@ public class DViewModel extends ViewModel {
     }
 
     private void getDataWeatherData(){
+
         String userLocation= PreferenceManager.getDefaultSharedPreferences(getContext())
                 .getString("location",
                         getContext().getResources().getString(R.string.default_user_location));

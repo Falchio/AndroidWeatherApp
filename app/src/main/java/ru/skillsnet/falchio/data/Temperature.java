@@ -2,12 +2,12 @@ package ru.skillsnet.falchio.data;
 
 public class Temperature {
 
-    private double temp;
-    private double tempFeelsLike;
-    private double tempMin;
-    private double tempMax;
+    private int temp;
+    private int tempFeelsLike;
+    private int tempMin;
+    private int tempMax;
 
-    public Temperature(double temp, double tempFeelsLike, double tempMin, double tempMax) {
+    public Temperature(int temp, int tempFeelsLike, int tempMin, int tempMax) {
         this.temp = temp;
         this.tempFeelsLike = tempFeelsLike;
         this.tempMin = tempMin;
@@ -21,35 +21,35 @@ public class Temperature {
         this.tempMax = -200;
     }
 
-    public double getTemp() {
+    public int getTemp() {
         return temp;
     }
 
-    public void setTemp(double temp) {
+    public void setTemp(int temp) {
         this.temp = temp;
     }
 
-    public double getTempFeelsLike() {
+    public int getTempFeelsLike() {
         return tempFeelsLike;
     }
 
-    public void setTempFeelsLike(double tempFeelsLike) {
+    public void setTempFeelsLike(int tempFeelsLike) {
         this.tempFeelsLike = tempFeelsLike;
     }
 
-    public double getTempMin() {
+    public int getTempMin() {
         return tempMin;
     }
 
-    public void setTempMin(double tempMin) {
+    public void setTempMin(int tempMin) {
         this.tempMin = tempMin;
     }
 
-    public double getTempMax() {
+    public int getTempMax() {
         return tempMax;
     }
 
-    public void setTempMax(double tempMax) {
+    public void setTempMax(int tempMax) {
         this.tempMax = tempMax;
     }
 }

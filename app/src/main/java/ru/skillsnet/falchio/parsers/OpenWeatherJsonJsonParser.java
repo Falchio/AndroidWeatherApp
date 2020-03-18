@@ -106,12 +106,11 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
         Temperature temperature;
         try {
             JSONObject tempJson = readerJson.getJSONObject(MAIN_TEMPERATURE);
-            temperature= new Temperature(
-                    tempJson.getDouble(TEMPERATURE),
-                    tempJson.getDouble(TEMPERATURE_FEELS_LIKE),
-                    tempJson.getDouble(TEMP_MIN),
-                    tempJson.getDouble(TEMP_MAX)
-            );
+            int temp = (int) Math.round(tempJson.getDouble(TEMPERATURE));
+            int tempFeelsLike = (int) Math.round(tempJson.getDouble(TEMPERATURE_FEELS_LIKE));
+            int tempMin = (int)Math.round(tempJson.getDouble(TEMP_MIN));
+            int tempMax = (int) Math.round(tempJson.getDouble(TEMP_MAX));
+            temperature= new Temperature(temp, tempFeelsLike, tempMin, tempMax);
 
         } catch (JSONException e){
             e.printStackTrace();
@@ -156,12 +155,15 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
         try {
             JSONObject windJson = readerJson.getJSONObject(WIND);
             // не у всех городов есть направление ветра
+
+            int windSpeed = (int) Math.round(windJson.getDouble(WIND_SPEED));
+            
             if (windJson.has(WIND_DEGREES)){
                 wind = new Wind(
-                        windJson.getInt(WIND_SPEED),
+                        windSpeed,
                         windJson.getInt(WIND_DEGREES));
             } else {
-                wind = new Wind(windJson.getInt(WIND_SPEED));
+                wind = new Wind(windSpeed);
             }
 
         } catch (JSONException e) {
