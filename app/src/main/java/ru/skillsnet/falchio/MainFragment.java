@@ -1,6 +1,7 @@
 package ru.skillsnet.falchio;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
 import ru.skillsnet.falchio.parsers.DownloadImageTask;
+import ru.skillsnet.falchio.service.WeatherService;
 
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE_END;
@@ -38,6 +40,7 @@ public class MainFragment extends Fragment {
     private TextView dateText;
     private final DLiveData liveData = new DLiveData();
     private final DViewModel model = liveData.getViewModel();
+    private ImageView weatherIcon;
 
 
     public MainFragment() {
@@ -58,12 +61,13 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         temperatureTextView = rootView.findViewById(R.id.temperature_view_text);
-        ImageView weatherIcon = rootView.findViewById(R.id.weather_icon);
+        weatherIcon = rootView.findViewById(R.id.weather_icon);
         locationText = rootView.findViewById(R.id.text_view_location);
         feelsLikeText = rootView.findViewById(R.id.text_view_feels_like);
         windSpeedText = rootView.findViewById(R.id.text_view_wind_speed);
         descriptionText = rootView.findViewById(R.id.text_view_description);
         dateText = rootView.findViewById(R.id.text_view_date);
+
 
         return rootView;
     }
@@ -71,12 +75,15 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
             model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
                 @Override
                 public void onChanged(DataWeather dataWeather) {
                     setWeatherText(dataWeather);
                 }
-        });
+            });
+
+            getActivity().startService(new Intent(getActivity(), WeatherService.class));
 
     }
 
@@ -90,8 +97,6 @@ public class MainFragment extends Fragment {
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
         dateText.setText(sdf.format(date));
-
-        ImageView weatherIcon = getActivity().findViewById(R.id.weather_icon);
 
         new DownloadImageTask(weatherIcon)
                 .execute(

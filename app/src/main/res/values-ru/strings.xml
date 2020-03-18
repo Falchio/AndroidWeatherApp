@@ -20,4 +20,5 @@
     <string name="meters_per_second">" м/с"</string>
     <string name="cancel">отмена</string>
     <string name="ok">ок</string>
+    <string name="service_for_weather_update">служба обновления погоды</string>
 </resources>

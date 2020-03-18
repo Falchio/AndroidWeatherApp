@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppLightTheme">
 
+        <service android:name=".service.WeatherService"
+            android:exported="false"
+            android:description="@string/service_for_weather_update"/>
+
 
         <activity android:name=".About"
             android:label="@string/menu_button_about"

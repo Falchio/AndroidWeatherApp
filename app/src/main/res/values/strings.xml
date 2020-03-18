@@ -20,6 +20,7 @@
     <string name="menu_button_select_city">Select DLocation</string>
     <string name="hint_select_location">select DLocation please</string>
     <string name="location_confirm">Confirm</string>
+    <string name="service_for_weather_update">weather update service</string>
 
     <string name="temp_temperature">Updating…</string>
     <string name="celsius" translatable="false">" ℃"</string>
