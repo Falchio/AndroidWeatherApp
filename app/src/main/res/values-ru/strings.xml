@@ -16,7 +16,7 @@
     <string name="feels_like">"Ощущается как: "</string>
     <string name="temp_temperature">Обновление…</string>
     <string name="use_dark_theme">Темная тема</string>
-    <string name="wind">скорость ветра</string>
+    <string name="myWind">скорость ветра</string>
     <string name="meters_per_second">" м/с"</string>
     <string name="cancel">отмена</string>
     <string name="ok">ок</string>

@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/wind"
+                android:contentDescription="@string/myWind"
                 android:src="@drawable/ic_wind"/>
 
             <TextView

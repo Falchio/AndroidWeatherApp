@@ -1,19 +1,19 @@
 package ru.skillsnet.falchio.data;
 
-public class Weather {
+public class MyWeather {
     private int weatherId;
     private String weatherMain;
     private String description;
     private String weatherIcon;
 
-    public Weather(int weatherId, String weatherMain, String description, String weatherIcon) {
+    public MyWeather(int weatherId, String weatherMain, String description, String weatherIcon) {
         this.weatherId = weatherId;
         this.weatherMain = weatherMain;
         this.description = description;
         this.weatherIcon = weatherIcon;
     }
 
-    public Weather() {
+    public MyWeather() {
         this.weatherId = 0;
         this.weatherMain = "null";
         this.description = "null";

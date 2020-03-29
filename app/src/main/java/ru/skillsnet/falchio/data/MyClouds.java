@@ -1,25 +1,25 @@
 package ru.skillsnet.falchio.data;
 
-public class Clouds {
+public class MyClouds {
     private int clouds;
     private int pressure;
     private int humidity;
     private int visibility;
 
-    public Clouds(int clouds, int pressure, int humidity, int visibility) {
+    public MyClouds(int clouds, int pressure, int humidity, int visibility) {
         this.clouds = clouds;
         this.pressure = pressure;
         this.humidity = humidity;
         this.visibility=visibility;
     }
 
-    public Clouds(int clouds, int pressure, int humidity) {
+    public MyClouds(int clouds, int pressure, int humidity) {
         this.clouds = clouds;
         this.pressure = pressure;
         this.humidity = humidity;
     }
 
-    public Clouds(){
+    public MyClouds(){
         this.clouds = -99;
         this.pressure = -99;
         this.humidity = -99;

@@ -91,8 +91,8 @@ public class MainFragment extends Fragment {
         temperatureTextView.setText(weather.getTemperature().getTemp() + getString(R.string.celsius));
         locationText.setText(String.valueOf(weather.getDLocation().getCityName()));
         feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()) + getString(R.string.celsius));
-        windSpeedText.setText(weather.getWind().getWindSpeed() + getString(R.string.meters_per_second));
-        descriptionText.setText(weather.getWeather().getDescription());
+        windSpeedText.setText(weather.getMyWind().getWindSpeed() + getString(R.string.meters_per_second));
+        descriptionText.setText(weather.getMyWeather().getDescription());
         Date date = new java.util.Date(weather.getDTime().getDataTime()*1000L);
         SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
@@ -100,7 +100,7 @@ public class MainFragment extends Fragment {
 
         new DownloadImageTask(weatherIcon)
                 .execute(
-                        OW_IMAGE + weather.getWeather().getWeatherIcon() + OW_IMAGE_END);
+                        OW_IMAGE + weather.getMyWeather().getWeatherIcon() + OW_IMAGE_END);
     }
 
 }

@@ -4,14 +4,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ru.skillsnet.falchio.data.Clouds;
+import ru.skillsnet.falchio.data.MyClouds;
 import ru.skillsnet.falchio.data.DLocation;
 import ru.skillsnet.falchio.data.DTime;
 import ru.skillsnet.falchio.data.DataWeather;
+import ru.skillsnet.falchio.data.MyWind;
 import ru.skillsnet.falchio.data.OpenWeatherJsonConst;
 import ru.skillsnet.falchio.data.Temperature;
-import ru.skillsnet.falchio.data.Weather;
-import ru.skillsnet.falchio.data.Wind;
+import ru.skillsnet.falchio.data.MyWeather;
 
 public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
     private String jsonStringHttp;
@@ -38,7 +38,7 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
             if(readerJson.getString(COD).equals(NOT_FOUND)){ // город не найден
                 dataWeather = new DataWeather();
                 String message = readerJson.getString(MESSAGE);
-                dataWeather.getWeather().setDescription(message);
+                dataWeather.getMyWeather().setDescription(message);
 
                 return dataWeather;
             }
@@ -82,13 +82,13 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
         return DLocation;
     }
 
-    private Weather getWeather(JSONObject readerJson) {
-        Weather weather;
+    private MyWeather getWeather(JSONObject readerJson) {
+        MyWeather myWeather;
 
         try{
             JSONArray weatherArr = readerJson.getJSONArray(WEATHER);
             JSONObject weatherObj = weatherArr.getJSONObject(0);
-            weather = new Weather(
+            myWeather = new MyWeather(
                     weatherObj.getInt(WEATHER_ID),
                     weatherObj.getString(WEATHER_MAIN),
                     weatherObj.getString(DESCRIPTION),
@@ -96,10 +96,10 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
             );
         }catch (JSONException e){
             e.printStackTrace();
-            weather = new Weather();
+            myWeather = new MyWeather();
         }
 
-        return weather;
+        return myWeather;
     }
 
     private Temperature getTemperature(JSONObject readerJson) {
@@ -119,8 +119,8 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
         return temperature;
     }
 
-    private Clouds getClouds(JSONObject readerJson) {
-        Clouds clouds;
+    private MyClouds getClouds(JSONObject readerJson) {
+        MyClouds myClouds;
 
         try{
             JSONObject cloudsJsonObject = readerJson.getJSONObject(CLOUDS);
@@ -129,13 +129,13 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
             //не у всех городов есть поле VISIBILITY
 
             if (readerJson.has(VISIBILITY)){
-                clouds = new Clouds(
+                myClouds = new MyClouds(
                         cloudsJsonObject.getInt(CLOUDS_ALL),
                         cloudsJsonMain.getInt(PRESSURE),
                         cloudsJsonMain.getInt(HUMIDITY),
                         readerJson.getInt(VISIBILITY));
             } else {
-                clouds = new Clouds(
+                myClouds = new MyClouds(
                         cloudsJsonObject.getInt(CLOUDS_ALL),
                         cloudsJsonMain.getInt(PRESSURE),
                         cloudsJsonMain.getInt(HUMIDITY));
@@ -143,14 +143,14 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
 
         } catch (JSONException e){
             e.printStackTrace();
-            clouds = new Clouds();
+            myClouds = new MyClouds();
         }
 
-        return clouds;
+        return myClouds;
     }
 
-    private Wind getWind(JSONObject readerJson) {
-        Wind wind;
+    private MyWind getWind(JSONObject readerJson) {
+        MyWind myWind;
 
         try {
             JSONObject windJson = readerJson.getJSONObject(WIND);
@@ -159,18 +159,18 @@ public class OpenWeatherJsonJsonParser implements OpenWeatherJsonConst {
             int windSpeed = (int) Math.round(windJson.getDouble(WIND_SPEED));
             
             if (windJson.has(WIND_DEGREES)){
-                wind = new Wind(
+                myWind = new MyWind(
                         windSpeed,
                         windJson.getInt(WIND_DEGREES));
             } else {
-                wind = new Wind(windSpeed);
+                myWind = new MyWind(windSpeed);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
-            wind = new Wind();
+            myWind = new MyWind();
         }
-        return wind;
+        return myWind;
     }
 
     private DTime getTime(JSONObject readerJson) {

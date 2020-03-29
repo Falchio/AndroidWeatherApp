@@ -10,7 +10,7 @@ public interface OpenWeatherJsonConst {
     String CITY_NAME = "name";
     String SYSTEM = "sys";
 
-    //Weather class
+    //MyWeather class
     String WEATHER ="weather";
     String WEATHER_ID ="id";
     String WEATHER_MAIN ="main";
@@ -24,14 +24,14 @@ public interface OpenWeatherJsonConst {
     String TEMP_MIN="temp_min";
     String TEMP_MAX="temp_max";
 
-    //Clouds class
+    //MyClouds class
     String PRESSURE ="pressure";
     String HUMIDITY ="humidity";
     String VISIBILITY ="visibility";
     String CLOUDS="clouds";
     String CLOUDS_ALL = "all";
 
-    //Wind class
+    //MyWind class
     String WIND = "wind";
     String WIND_SPEED ="speed";
     String WIND_DEGREES ="deg";

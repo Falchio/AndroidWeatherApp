@@ -6,7 +6,7 @@
     <!-- legend   -->
     <string name="weatherIcon">Weather icon</string>
     <string name="atmPressureCheckBox">atmospheric pressure</string>
-    <string name="windCheckBox">wind speed</string>
+    <string name="windCheckBox">myWind speed</string>
 
     <!--   Settings-->
 
@@ -20,7 +20,7 @@
     <string name="menu_button_select_city">Select DLocation</string>
     <string name="hint_select_location">select DLocation please</string>
     <string name="location_confirm">Confirm</string>
-    <string name="service_for_weather_update">weather update service</string>
+    <string name="service_for_weather_update">myWeather update service</string>
 
     <string name="temp_temperature">Updating…</string>
     <string name="celsius" translatable="false">" ℃"</string>
@@ -29,7 +29,7 @@
     <string name="no_connection">"No connection to "</string>
     <string name="feels_like">"Feels like: "</string>
     <string name="use_dark_theme">Use dark theme</string>
-    <string name="wind">speed of wind</string>
+    <string name="myWind">speed of myWind</string>
     <string name="meters_per_second">" m/s"</string>
     <string name="cancel">cancel</string>
     <string name="ok">ok</string>

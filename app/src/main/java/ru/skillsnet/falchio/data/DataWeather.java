@@ -5,27 +5,27 @@ public class DataWeather {
     private DLocation DLocation;
     private DTime DTime;
     private Temperature temperature;
-    private Clouds clouds;
-    private Weather weather;
-    private Wind wind;
+    private MyClouds myClouds;
+    private MyWeather myWeather;
+    private MyWind myWind;
 
 
-    public DataWeather(DLocation DLocation, DTime DTime, Temperature temperature, Clouds clouds, Weather weather, Wind wind) {
+    public DataWeather(DLocation DLocation, DTime DTime, Temperature temperature, MyClouds myClouds, MyWeather myWeather, MyWind myWind) {
         this.DLocation = DLocation;
         this.DTime = DTime;
         this.temperature = temperature;
-        this.clouds = clouds;
-        this.weather = weather;
-        this.wind = wind;
+        this.myClouds = myClouds;
+        this.myWeather = myWeather;
+        this.myWind = myWind;
     }
 
     public DataWeather(){
         this.DLocation = new DLocation();
         this.DTime = new DTime();
         this.temperature = new Temperature();
-        this.clouds = new Clouds();
-        this.weather = new Weather();
-        this.wind = new Wind();
+        this.myClouds = new MyClouds();
+        this.myWeather = new MyWeather();
+        this.myWind = new MyWind();
     }
 
     public DLocation getDLocation() {
@@ -40,16 +40,16 @@ public class DataWeather {
         return temperature;
     }
 
-    public Clouds getClouds() {
-        return clouds;
+    public MyClouds getMyClouds() {
+        return myClouds;
     }
 
-    public Weather getWeather() {
-        return weather;
+    public MyWeather getMyWeather() {
+        return myWeather;
     }
 
-    public Wind getWind() {
-        return wind;
+    public MyWind getMyWind() {
+        return myWind;
     }
 
 

@@ -1,19 +1,19 @@
 package ru.skillsnet.falchio.data;
 
-public class Wind {
+public class MyWind {
     private int windSpeed;
     private int windDeg;
 
-    public Wind(int windSpeed, int windDeg) {
+    public MyWind(int windSpeed, int windDeg) {
         this.windSpeed = windSpeed;
         this.windDeg = windDeg;
     }
 
-    public Wind(int windSpeed) {
+    public MyWind(int windSpeed) {
         this.windSpeed = windSpeed;
     }
 
-    public Wind() {
+    public MyWind() {
         this.windSpeed = -1;
         this.windDeg = 0;
     }
