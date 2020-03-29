@@ -52,6 +52,15 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         getLifecycle().addObserver(liveData);
 
+        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
+            @Override
+            public void onChanged(DataWeather dataWeather) {
+                setWeatherText(dataWeather);
+            }
+        });
+
+        getActivity().startService(new Intent(getActivity(), WeatherService.class));
+
     }
 
 
@@ -67,8 +76,6 @@ public class MainFragment extends Fragment {
         windSpeedText = rootView.findViewById(R.id.text_view_wind_speed);
         descriptionText = rootView.findViewById(R.id.text_view_description);
         dateText = rootView.findViewById(R.id.text_view_date);
-
-
         return rootView;
     }
 
@@ -76,14 +83,7 @@ public class MainFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-            model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
-                @Override
-                public void onChanged(DataWeather dataWeather) {
-                    setWeatherText(dataWeather);
-                }
-            });
 
-            getActivity().startService(new Intent(getActivity(), WeatherService.class));
 
     }
 

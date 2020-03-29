@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -39,8 +39,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/weatherIcon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_date"
-            android:src="@drawable/ic_01d"/>
+            app:layout_constraintTop_toBottomOf="@+id/text_view_date"/>
 
         <TextView
             android:id="@+id/temperature_view_text"
