@@ -15,12 +15,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
+import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
+import ru.skillsnet.falchio.openweathergson.Weather;
 import ru.skillsnet.falchio.parsers.DownloadImageTask;
 import ru.skillsnet.falchio.service.WeatherService;
 
@@ -52,10 +56,19 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         getLifecycle().addObserver(liveData);
 
-        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
+        // мой класс
+//        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
+//            @Override
+//            public void onChanged(DataWeather dataWeather) {
+//                setWeatherText(dataWeather);
+//            }
+//        });
+
+        //ретрофит
+        model.getOpenWeatherMutableLiveData().observe(this, new Observer<OpenweatherRequest>() {
             @Override
-            public void onChanged(DataWeather dataWeather) {
-                setWeatherText(dataWeather);
+            public void onChanged(OpenweatherRequest openweatherRequest) {
+                setWeatherText(openweatherRequest);
             }
         });
 
@@ -82,9 +95,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-
-
     }
 
     private void setWeatherText(DataWeather weather) {
@@ -101,6 +111,30 @@ public class MainFragment extends Fragment {
         new DownloadImageTask(weatherIcon)
                 .execute(
                         OW_IMAGE + weather.getMyWeather().getWeatherIcon() + OW_IMAGE_END);
+    }
+
+
+    private void setWeatherText(OpenweatherRequest openweatherRequest) {
+
+        locationText.setText(openweatherRequest.getName());
+
+        long temp = Math.round(openweatherRequest.getMain().getTemp());
+        temperatureTextView.setText(temp + getString(R.string.celsius));
+
+        long feelsLike =Math.round(openweatherRequest.getMain().getFeels_like());
+        feelsLikeText.setText( feelsLike + getString(R.string.celsius));
+
+        windSpeedText.setText(openweatherRequest.getWind().getSpeed() + getString(R.string.meters_per_second));
+
+        Weather[] weather = openweatherRequest.getWeather();
+        descriptionText.setText(weather[0].getDescription());
+        Date date = new java.util.Date(openweatherRequest.getDt()*1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
+        dateText.setText(sdf.format(date));
+
+        Picasso.get().load(OW_IMAGE+weather[0].getIcon()+OW_IMAGE_END).into(weatherIcon);
+
     }
 
 }

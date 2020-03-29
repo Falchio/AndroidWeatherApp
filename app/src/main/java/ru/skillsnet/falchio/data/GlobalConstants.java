@@ -9,6 +9,10 @@ public interface GlobalConstants {
     String OW_API = "&APPID=4e63ca6e84c69bff9b46136d4ef35c1d&units=metric&lang=RU";
     String OW_IMAGE = "https://openweathermap.org/img/wn/";
     String OW_IMAGE_END = "@2x.png";
+    String DOMAIN = "http://api.openweathermap.org/";
+    String KEY_API = "4e63ca6e84c69bff9b46136d4ef35c1d";
+    String UNITS ="metric";
+    String LANG = "RU";
 
     //Settings Constant
 
