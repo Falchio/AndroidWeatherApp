@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.Nullable;
@@ -14,12 +13,13 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import ru.skillsnet.falchio.MainActivity;
+import java.util.Objects;
+
 import ru.skillsnet.falchio.R;
 
 public class SelectLocationDialog extends BottomSheetDialogFragment {
     private OnDialogListener dialogListener;
-    AutoCompleteTextView autoCompleteTextView;
+    private AutoCompleteTextView autoCompleteTextView;
 
     public static SelectLocationDialog newInstance() {
         return new SelectLocationDialog();
@@ -51,7 +51,7 @@ public class SelectLocationDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 dismiss();
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getContext()));
                 String userLocation =  autoCompleteTextView.getText().toString();
                 Log.e("TAG", "onClick: " + userLocation );
                 SharedPreferences.Editor editor = sharedPreferences.edit();

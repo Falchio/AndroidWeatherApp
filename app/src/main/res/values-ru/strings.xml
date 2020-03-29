@@ -18,7 +18,7 @@
     <string name="use_dark_theme">Темная тема</string>
     <string name="myWind">скорость ветра</string>
     <string name="meters_per_second">" м/с"</string>
-    <string name="cancel">отмена</string>
-    <string name="ok">ок</string>
+    <string name="cancel">Отмена</string>
     <string name="service_for_weather_update">служба обновления погоды</string>
+    <string name="location_not_found">Извините, такое местоположение не найдено -</string>
 </resources>

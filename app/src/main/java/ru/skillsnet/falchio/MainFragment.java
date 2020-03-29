@@ -19,13 +19,12 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
-import ru.skillsnet.falchio.data.DataWeather;
 import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
 import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
 import ru.skillsnet.falchio.openweathergson.Weather;
-import ru.skillsnet.falchio.parsers.DownloadImageTask;
 import ru.skillsnet.falchio.service.WeatherService;
 
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
@@ -56,15 +55,6 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         getLifecycle().addObserver(liveData);
 
-        // мой класс
-//        model.getWeatherMutableLiveData().observe(this, new Observer<DataWeather>() {
-//            @Override
-//            public void onChanged(DataWeather dataWeather) {
-//                setWeatherText(dataWeather);
-//            }
-//        });
-
-        //ретрофит
         model.getOpenWeatherMutableLiveData().observe(this, new Observer<OpenweatherRequest>() {
             @Override
             public void onChanged(OpenweatherRequest openweatherRequest) {
@@ -72,7 +62,7 @@ public class MainFragment extends Fragment {
             }
         });
 
-        getActivity().startService(new Intent(getActivity(), WeatherService.class));
+        Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), WeatherService.class));
 
     }
 
@@ -92,29 +82,11 @@ public class MainFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    private void setWeatherText(DataWeather weather) {
-        temperatureTextView.setText(weather.getTemperature().getTemp() + getString(R.string.celsius));
-        locationText.setText(String.valueOf(weather.getDLocation().getCityName()));
-        feelsLikeText.setText(String.valueOf(weather.getTemperature().getTempFeelsLike()) + getString(R.string.celsius));
-        windSpeedText.setText(weather.getMyWind().getWindSpeed() + getString(R.string.meters_per_second));
-        descriptionText.setText(weather.getMyWeather().getDescription());
-        Date date = new java.util.Date(weather.getDTime().getDataTime()*1000L);
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
-        dateText.setText(sdf.format(date));
-
-        new DownloadImageTask(weatherIcon)
-                .execute(
-                        OW_IMAGE + weather.getMyWeather().getWeatherIcon() + OW_IMAGE_END);
-    }
-
 
     private void setWeatherText(OpenweatherRequest openweatherRequest) {
+        if (openweatherRequest==null) {
+            locationText.setText(R.string.location_not_found);
+            return;}
 
         locationText.setText(openweatherRequest.getName());
 

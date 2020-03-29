@@ -91,7 +91,7 @@ public class DSetting extends AppStyle {
         }
     }
 
-    private OnDialogListener dialogListener = new OnDialogListener() {
+    private final OnDialogListener dialogListener = new OnDialogListener() {
 
         @Override
         public void onDialogYes() {
