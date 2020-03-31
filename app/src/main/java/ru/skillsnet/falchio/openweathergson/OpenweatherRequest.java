@@ -1,41 +1,63 @@
 package ru.skillsnet.falchio.openweathergson;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(indices = {@Index(value = {"name"})})
 public class OpenweatherRequest {
+
+    @PrimaryKey(autoGenerate = true)
+    public long idRoom;
+
+    @ColumnInfo(name = "coord")
     @SerializedName("coord")
     private Coord coord;
 
+    @ColumnInfo(name = "weather")
     @SerializedName("weather")
     private Weather[] weather;
 
+    @ColumnInfo(name = "info")
     @SerializedName("base")
     private String base;
 
+    @ColumnInfo(name = "main")
     @SerializedName("main")
     private Main main;
 
+    @ColumnInfo(name = "visibility")
     @SerializedName("visibility")
     private int visibility;
 
+    @ColumnInfo(name = "wind")
     @SerializedName("wind")
     private Wind wind;
 
+    @ColumnInfo(name = "clouds")
     @SerializedName("clouds")
     private Clouds clouds;
 
+    @ColumnInfo(name ="dt")
     @SerializedName("dt")
     private long dt;
 
+    @ColumnInfo(name = "sys")
     @SerializedName("sys")
     private Sys sys;
 
+    @ColumnInfo(name = "id")
     @SerializedName("id")
     private long id;
 
+    @ColumnInfo(name = "name")
     @SerializedName("name")
     private String name;
 
+    @ColumnInfo(name = "cod")
     @SerializedName("cod")
     private int cod;
 
