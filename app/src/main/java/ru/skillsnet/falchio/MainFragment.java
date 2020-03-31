@@ -2,6 +2,8 @@ package ru.skillsnet.falchio;
 
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +61,7 @@ public class MainFragment extends Fragment {
         model.getOpenWeatherMutableLiveData().observe(this, new Observer<OpenweatherRequest>() {
             @Override
             public void onChanged(OpenweatherRequest openweatherRequest) {
+                Log.e("DWeather", "onChanged: changed openweatherRequest" );
                 setWeatherText(openweatherRequest);
             }
         });
@@ -84,6 +88,9 @@ public class MainFragment extends Fragment {
 
 
     private void setWeatherText(OpenweatherRequest openweatherRequest) {
+
+        Log.e("DWeather", "setWeatherText: start request in Main Fragment");
+
         if (openweatherRequest==null) {
             locationText.setText(R.string.location_not_found);
             return;}
@@ -105,8 +112,8 @@ public class MainFragment extends Fragment {
         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
         dateText.setText(sdf.format(date));
 
-        Picasso.get().load(OW_IMAGE+weather[0].getIcon()+OW_IMAGE_END).into(weatherIcon);
-
+        final int i = getResources().getIdentifier("ic_"+weather[0].getIcon(), "drawable", getContext().getPackageName());
+        weatherIcon.setImageResource(i);
     }
 
 }

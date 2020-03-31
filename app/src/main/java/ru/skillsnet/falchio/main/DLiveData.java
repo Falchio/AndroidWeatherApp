@@ -52,20 +52,20 @@ public class DLiveData implements LifecycleObserver {
     }
 
     private void requestRetrofit(String userLocation, String keyApi, String units, String language){
+        Log.e("DWeather", "requestRetrofit: send request");
         openWeather.loadWeather(userLocation, keyApi, units, language)
         .enqueue(new Callback<OpenweatherRequest>() {
             @Override
             public void onResponse(Call<OpenweatherRequest> call, Response<OpenweatherRequest> response) {
                 viewModel.getOpenWeatherMutableLiveData().setValue(response.body());
+
             }
 
             @Override
             public void onFailure(Call<OpenweatherRequest> call, Throwable t) {
-                t.printStackTrace();
-                Log.e(TAG, "onFailure: ");
+                Log.e("DWeather", "onFailure: have Failure  " + t.toString());
             }
         });
     }
-
 }
 
