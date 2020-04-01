@@ -9,28 +9,32 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
+import ru.skillsnet.falchio.database.SimpleWeatherData;
+
 @Dao
 public interface OpenWeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertOpenWeatherRequest(OpenweatherRequest openweatherRequest);
+    void insertOpenWeatherRequest(SimpleWeatherData simpleWeatherData);
 
     @Update
-    void updateOpenWeatherRequest(OpenweatherRequest openweatherRequest);
+    void updateOpenWeatherRequest(SimpleWeatherData simpleWeatherData);
 
     @Delete
-    void deleteOpenWeatherRequest(OpenweatherRequest openweatherRequest);
+    void deleteOpenWeatherRequest(SimpleWeatherData simpleWeatherData);
 
     @Query("DELETE FROM openweather WHERE idRoom =:idRoom")
     void deleteOpenWeatherRequestByIdRoom(long idRoom);
 
     @Query("SELECT * FROM openweather")
-    List<OpenweatherRequest> getAllOpenWeatherRequest();
+    List<SimpleWeatherData> getAllOpenWeatherRequest();
 
     @Query("SELECT * FROM openweather WHERE idRoom=:idRoom")
-    OpenweatherRequest getOpenWeatherRequestByIdRoom(long idRoom);
+    SimpleWeatherData getOpenWeatherRequestByIdRoom(long idRoom);
 
     @Query("SELECT COUNT() FROM openweather")
     long getCountOpenWeatherRequest();
+
+    @Query("DELETE FROM openweather")
+    public void deleteHistory();
 }

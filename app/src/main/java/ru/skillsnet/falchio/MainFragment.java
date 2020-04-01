@@ -103,7 +103,8 @@ public class MainFragment extends Fragment {
         long feelsLike =Math.round(openweatherRequest.getMain().getFeels_like());
         feelsLikeText.setText( feelsLike + getString(R.string.celsius));
 
-        windSpeedText.setText(openweatherRequest.getWind().getSpeed() + getString(R.string.meters_per_second));
+        long windSpeed = Math.round(openweatherRequest.getWind().getSpeed());
+        windSpeedText.setText(windSpeed + getString(R.string.meters_per_second));
 
         Weather[] weather = openweatherRequest.getWeather();
         descriptionText.setText(weather[0].getDescription());

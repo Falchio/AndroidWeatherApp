@@ -7,57 +7,57 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(indices = {@Index(value = {"name"})}, tableName = "openweather")
+//@Entity(indices = {@Index(value = {"name"})}, tableName = "openweather")
 public class OpenweatherRequest {
 
-    @PrimaryKey(autoGenerate = true)
+//    @PrimaryKey(autoGenerate = true)
     public long idRoom;
 
-    @ColumnInfo(name = "coord")
+//    @ColumnInfo(name = "coord")
     @SerializedName("coord")
     private Coord coord;
 
-    @ColumnInfo(name = "weather")
+//    @ColumnInfo(name = "weather")
     @SerializedName("weather")
     private Weather[] weather;
 
-    @ColumnInfo(name = "info")
+//    @ColumnInfo(name = "info")
     @SerializedName("base")
     private String base;
 
-    @ColumnInfo(name = "main")
+//    @ColumnInfo(name = "main")
     @SerializedName("main")
     private Main main;
 
-    @ColumnInfo(name = "visibility")
+//    @ColumnInfo(name = "visibility")
     @SerializedName("visibility")
     private int visibility;
 
-    @ColumnInfo(name = "wind")
+//    @ColumnInfo(name = "wind")
     @SerializedName("wind")
     private Wind wind;
 
-    @ColumnInfo(name = "clouds")
+//    @ColumnInfo(name = "clouds")
     @SerializedName("clouds")
     private Clouds clouds;
 
-    @ColumnInfo(name ="dt")
+//    @ColumnInfo(name ="dt")
     @SerializedName("dt")
     private long dt;
 
-    @ColumnInfo(name = "sys")
+//    @ColumnInfo(name = "sys")
     @SerializedName("sys")
     private Sys sys;
 
-    @ColumnInfo(name = "id")
+//    @ColumnInfo(name = "id")
     @SerializedName("id")
     private long id;
 
-    @ColumnInfo(name = "name")
+//    @ColumnInfo(name = "name")
     @SerializedName("name")
     private String name;
 
-    @ColumnInfo(name = "cod")
+//    @ColumnInfo(name = "cod")
     @SerializedName("cod")
     private int cod;
 

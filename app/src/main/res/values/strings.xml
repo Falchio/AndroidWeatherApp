@@ -34,5 +34,6 @@
     <string name="meters_per_second">" m/s"</string>
     <string name="cancel">Cancel</string>
     <string name="ok" translatable="false">OK</string>
+    <string name="clear_history">Clear history</string>
 
 </resources>

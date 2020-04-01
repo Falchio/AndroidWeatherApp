@@ -24,7 +24,9 @@ public class MyApplication extends  Application{
         database = Room.databaseBuilder(
                 getApplicationContext(),
                 OpenWeatherDatabase.class,
-                "education_database").build();
+                "openweather")
+                .allowMainThreadQueries()
+                .build();
     }
 
     public OpenWeatherDao getOpenWeatherDao(){

@@ -10,12 +10,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
 import java.util.Objects;
 
+import ru.skillsnet.MyApplication;
+import ru.skillsnet.falchio.database.OpenSimpleDataSource;
+import ru.skillsnet.falchio.database.SimpleWeatherData;
 import ru.skillsnet.falchio.decor.OtherCityAdapter;
 
 
@@ -24,6 +29,8 @@ import ru.skillsnet.falchio.decor.OtherCityAdapter;
  */
 public class SecondFragment extends Fragment {
     private RecyclerView otherCityRecView;
+    private OpenSimpleDataSource opSource;
+    String[] otherCity;
 
 
     public SecondFragment() {
@@ -33,6 +40,7 @@ public class SecondFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        opSource = new OpenSimpleDataSource(MyApplication.getInstance().getOpenWeatherDao());
 
     }
 
@@ -51,8 +59,23 @@ public class SecondFragment extends Fragment {
         initRecyclerView();
     }
 
-    private void initRecyclerView(){
-        String[] otherCity = getResources().getStringArray(R.array.other_city);
+    private void initRecyclerView() {
+
+
+
+//            String[] otherCity = getResources().getStringArray(R.array.other_city);
+                int size = (int) opSource.getCountSimpleWeatherData();
+                List<SimpleWeatherData> simpleList = opSource.getAllSimpleWeatherData();
+                otherCity = new String[size];
+
+                int i = 0;
+                for (SimpleWeatherData s : simpleList) {
+                    otherCity[i] = s.getSimpleDataString();
+                    Log.e("TAG", "run: " + s.getSimpleDataString());
+                    i++;
+                }
+
+
         RecyclerView otherCityRecView = Objects.requireNonNull(getView()).findViewById(R.id.other_city_recycler);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL);

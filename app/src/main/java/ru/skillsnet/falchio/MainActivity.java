@@ -2,6 +2,7 @@ package ru.skillsnet.falchio;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.ThemedSpinnerAdapter;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
@@ -18,7 +19,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import ru.skillsnet.MyApplication;
 import ru.skillsnet.falchio.data.GlobalConstants;
+import ru.skillsnet.falchio.database.OpenSimpleDataSource;
 import ru.skillsnet.falchio.decor.AppStyle;
 
 
@@ -65,6 +68,15 @@ public class MainActivity extends AppStyle implements GlobalConstants {
                 Intent aboutIntent = new Intent(MainActivity.this, About.class);
                 startActivity(aboutIntent);
                 return true;
+            case R.id.clear_search_history:
+                Thread t1 = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        OpenSimpleDataSource  opSource = new OpenSimpleDataSource(MyApplication.getInstance().getOpenWeatherDao());
+                        opSource.deleteHistory();
+                    }
+                });
+                t1.run();
             case R.id.button_menu_quit:
                 finish();
                 return true;

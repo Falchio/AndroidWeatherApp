@@ -15,7 +15,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.skillsnet.MyApplication;
 import ru.skillsnet.falchio.R;
-import ru.skillsnet.falchio.database.OpenWeatherRequestSource;
+import ru.skillsnet.falchio.database.OpenSimpleDataSource;
+import ru.skillsnet.falchio.database.SimpleWeatherData;
 import ru.skillsnet.falchio.openweathergson.OpenWeather;
 import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
 
@@ -28,7 +29,7 @@ public class DLiveData implements LifecycleObserver {
     private final String TAG = this.getClass().getSimpleName();
     private final DViewModel viewModel = new DViewModel();
     private OpenWeather openWeather;
-    private OpenWeatherRequestSource opSource;
+    private OpenSimpleDataSource opSource;
 
     public DViewModel getViewModel() {
         return viewModel;
@@ -38,7 +39,7 @@ public class DLiveData implements LifecycleObserver {
     public void getWeatherData() {
 
         Context context = MyApplication.getInstance();
-        opSource = new OpenWeatherRequestSource(MyApplication.getInstance().getOpenWeatherDao());
+        opSource = new OpenSimpleDataSource(MyApplication.getInstance().getOpenWeatherDao());
         String userLocation = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString("location",
                         context.getResources().getString(R.string.default_user_location));
@@ -64,8 +65,21 @@ public class DLiveData implements LifecycleObserver {
             public void onResponse(Call<OpenweatherRequest> call, Response<OpenweatherRequest> response) {
 
                 OpenweatherRequest opRequest = response.body();
+                SimpleWeatherData swd = new SimpleWeatherData(
+                        opRequest.getName(),
+                        opRequest.getDt(),
+                        (long) opRequest.getMain().getTemp()
+                );
 
-//                opSource.addOpenWeatherRequest(opRequest);
+                Thread t1 = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        opSource.addSimpleWeatherData(swd);
+                        Log.e("DLIVEDATA", "run: " + swd.getSimpleDataString() );
+                    }
+                });
+
+                t1.run();
                 viewModel.getOpenWeatherMutableLiveData().setValue(opRequest);
 
             }
