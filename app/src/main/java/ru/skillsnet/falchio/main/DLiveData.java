@@ -1,5 +1,6 @@
 package ru.skillsnet.falchio.main;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
@@ -12,11 +13,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ru.skillsnet.MyApplication;
 import ru.skillsnet.falchio.R;
+import ru.skillsnet.falchio.database.OpenWeatherRequestSource;
 import ru.skillsnet.falchio.openweathergson.OpenWeather;
 import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
 
-import static ru.skillsnet.MyApplication.getContext;
 import static ru.skillsnet.falchio.data.GlobalConstants.DOMAIN;
 import static ru.skillsnet.falchio.data.GlobalConstants.KEY_API;
 import static ru.skillsnet.falchio.data.GlobalConstants.LANG;
@@ -26,6 +28,7 @@ public class DLiveData implements LifecycleObserver {
     private final String TAG = this.getClass().getSimpleName();
     private final DViewModel viewModel = new DViewModel();
     private OpenWeather openWeather;
+    private OpenWeatherRequestSource opSource;
 
     public DViewModel getViewModel() {
         return viewModel;
@@ -34,9 +37,11 @@ public class DLiveData implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void getWeatherData() {
 
-        String userLocation = PreferenceManager.getDefaultSharedPreferences(getContext())
+        Context context = MyApplication.getInstance();
+        opSource = new OpenWeatherRequestSource(MyApplication.getInstance().getOpenWeatherDao());
+        String userLocation = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString("location",
-                        getContext().getResources().getString(R.string.default_user_location));
+                        context.getResources().getString(R.string.default_user_location));
 
         initRetrofit();
         requestRetrofit(userLocation, KEY_API, UNITS, LANG);
@@ -57,7 +62,11 @@ public class DLiveData implements LifecycleObserver {
         .enqueue(new Callback<OpenweatherRequest>() {
             @Override
             public void onResponse(Call<OpenweatherRequest> call, Response<OpenweatherRequest> response) {
-                viewModel.getOpenWeatherMutableLiveData().setValue(response.body());
+
+                OpenweatherRequest opRequest = response.body();
+
+//                opSource.addOpenWeatherRequest(opRequest);
+                viewModel.getOpenWeatherMutableLiveData().setValue(opRequest);
 
             }
 

@@ -1,5 +1,6 @@
 package ru.skillsnet.falchio.roomdao;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -9,7 +10,7 @@ import androidx.room.Update;
 import java.util.List;
 
 import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
-
+@Dao
 public interface OpenWeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -24,7 +25,7 @@ public interface OpenWeatherDao {
     @Query("DELETE FROM openweather WHERE idRoom =:idRoom")
     void deleteOpenWeatherRequestByIdRoom(long idRoom);
 
-    @Query("SELECT * FROM openweawther")
+    @Query("SELECT * FROM openweather")
     List<OpenweatherRequest> getAllOpenWeatherRequest();
 
     @Query("SELECT * FROM openweather WHERE idRoom=:idRoom")
