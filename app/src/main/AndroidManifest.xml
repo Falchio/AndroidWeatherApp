@@ -3,6 +3,7 @@
     package="ru.skillsnet.falchio">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="ru.skillsnet.MyApplication"
@@ -13,19 +14,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppLightTheme">
 
-        <service android:name=".service.WeatherService"
-            android:exported="false"
-            android:description="@string/service_for_weather_update"/>
+        <receiver
+            android:name="ru.skillsnet.falchio.receiver.ConnectReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
 
+        <service
+            android:name=".service.WeatherService"
+            android:description="@string/service_for_weather_update"
+            android:exported="false" />
 
-        <activity android:name=".About"
+        <activity
+            android:name=".About"
             android:label="@string/menu_button_about"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".DSetting"
             android:label="@string/title_activity_settings"
@@ -34,7 +45,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">

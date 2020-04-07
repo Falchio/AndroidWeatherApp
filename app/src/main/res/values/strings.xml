@@ -35,5 +35,10 @@
     <string name="cancel">Cancel</string>
     <string name="ok" translatable="false">OK</string>
     <string name="clear_history">Clear history</string>
+    <string name="internet_conn_lost">Internet connection is lost</string>
+    <string name="attention">Attention!</string>
+    <string name="wifi_enabled">WiFi enabled</string>
+    <string name="mobile_data_enabled">Mobile data enabled</string>
+    <string name="not_connected_to_internet">Not connected to internet</string>
 
 </resources>

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.Menu;
@@ -23,8 +24,7 @@ import ru.skillsnet.MyApplication;
 import ru.skillsnet.falchio.data.GlobalConstants;
 import ru.skillsnet.falchio.database.OpenSimpleDataSource;
 import ru.skillsnet.falchio.decor.AppStyle;
-
-
+import ru.skillsnet.falchio.receiver.ConnectReceiver;
 
 
 public class MainActivity extends AppStyle implements GlobalConstants {
