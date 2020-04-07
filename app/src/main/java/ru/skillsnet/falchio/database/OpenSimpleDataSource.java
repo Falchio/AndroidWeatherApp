@@ -29,10 +29,12 @@ public class OpenSimpleDataSource {
 
     public void addSimpleWeatherData(SimpleWeatherData simpleWeatherData){
         openWeatherDao.insertOpenWeatherRequest(simpleWeatherData);
+        LoadSimpleWeatherData();
     }
 
     public void updateSimpleWeatherData(SimpleWeatherData simpleWeatherData){
         openWeatherDao.updateOpenWeatherRequest(simpleWeatherData);
+        LoadSimpleWeatherData();
     }
 
     public void removeSimpleWeatherData(long id){
@@ -42,5 +44,6 @@ public class OpenSimpleDataSource {
 
     public void deleteHistory(){
         openWeatherDao.deleteHistory();
+        LoadSimpleWeatherData();
     }
 }

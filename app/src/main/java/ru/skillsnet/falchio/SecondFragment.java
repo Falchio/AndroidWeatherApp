@@ -62,18 +62,18 @@ public class SecondFragment extends Fragment {
     private void initRecyclerView() {
 
 
-
 //            String[] otherCity = getResources().getStringArray(R.array.other_city);
-                int size = (int) opSource.getCountSimpleWeatherData();
-                List<SimpleWeatherData> simpleList = opSource.getAllSimpleWeatherData();
-                otherCity = new String[size];
+        int size = (int) opSource.getCountSimpleWeatherData();
 
-                int i = 0;
-                for (SimpleWeatherData s : simpleList) {
-                    otherCity[i] = s.getSimpleDataString();
-                    Log.e("TAG", "run: " + s.getSimpleDataString());
-                    i++;
-                }
+        List<SimpleWeatherData> simpleList = opSource.getAllSimpleWeatherData();
+        otherCity = new String[size];
+
+        int i = 0;
+        for (SimpleWeatherData s : simpleList) {
+            otherCity[i] = s.getSimpleDataString();
+            Log.e("TAG", "run: " + s.getSimpleDataString());
+            i++;
+        }
 
 
         RecyclerView otherCityRecView = Objects.requireNonNull(getView()).findViewById(R.id.other_city_recycler);
