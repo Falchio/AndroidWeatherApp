@@ -79,7 +79,7 @@ public class DLiveData implements LifecycleObserver {
                     }
                 });
 
-                t1.run();
+                t1.start();
                 viewModel.getOpenWeatherMutableLiveData().setValue(opRequest);
 
             }

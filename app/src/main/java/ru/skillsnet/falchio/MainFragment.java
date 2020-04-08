@@ -2,8 +2,6 @@ package ru.skillsnet.falchio;
 
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,8 +16,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -30,9 +26,6 @@ import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
 import ru.skillsnet.falchio.openweathergson.Weather;
 import ru.skillsnet.falchio.receiver.MyFirebaseMessagingService;
 import ru.skillsnet.falchio.service.WeatherService;
-
-import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
-import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE_END;
 
 
 /**

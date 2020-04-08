@@ -2,28 +2,15 @@ package ru.skillsnet.falchio;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.ThemedSpinnerAdapter;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,7 +22,6 @@ import ru.skillsnet.MyApplication;
 import ru.skillsnet.falchio.data.GlobalConstants;
 import ru.skillsnet.falchio.database.OpenSimpleDataSource;
 import ru.skillsnet.falchio.decor.AppStyle;
-import ru.skillsnet.falchio.receiver.ConnectReceiver;
 
 
 public class MainActivity extends AppStyle implements GlobalConstants {
@@ -88,7 +74,7 @@ public class MainActivity extends AppStyle implements GlobalConstants {
                         opSource.deleteHistory();
                     }
                 });
-                t1.run();
+                t1.start();
             case R.id.button_menu_quit:
                 finish();
                 return true;

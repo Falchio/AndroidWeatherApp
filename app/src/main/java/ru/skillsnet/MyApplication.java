@@ -1,7 +1,6 @@
 package ru.skillsnet;
 
 import android.app.Application;
-import android.content.Context;
 
 import androidx.room.Room;
 

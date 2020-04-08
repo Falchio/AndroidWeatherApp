@@ -8,8 +8,6 @@ import androidx.room.PrimaryKey;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import ru.skillsnet.falchio.R;
-
 @Entity(indices = {@Index(value = {"city name"})}, tableName = "openweather")
 public class SimpleWeatherData {
 

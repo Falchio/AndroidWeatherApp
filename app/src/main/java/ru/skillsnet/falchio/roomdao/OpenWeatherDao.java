@@ -36,5 +36,5 @@ public interface OpenWeatherDao {
     long getCountOpenWeatherRequest();
 
     @Query("DELETE FROM openweather")
-    public void deleteHistory();
+    void deleteHistory();
 }
