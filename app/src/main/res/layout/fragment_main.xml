@@ -24,24 +24,26 @@
 
         <TextView
             android:id="@+id/text_view_date"
-            android:textSize="18sp"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_location" />
 
         <ImageView
             android:id="@+id/weather_icon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitStart"
-            android:adjustViewBounds="true"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
             android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/weatherIcon"
+            android:scaleType="fitStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_date"  />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_date" />
 
         <TextView
             android:id="@+id/temperature_view_text"
@@ -62,8 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="36sp"
             android:gravity="center"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,29 +87,29 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/feels_like"
                 android:src="@drawable/ic_scarf" />
-            
+
             <TextView
                 android:id="@+id/text_view_feels_like"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/myWind"
-                android:src="@drawable/ic_wind"/>
+                android:src="@drawable/ic_wind" />
 
             <TextView
                 android:id="@+id/text_view_wind_speed"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
         </TableRow>
     </androidx.constraintlayout.widget.ConstraintLayout>

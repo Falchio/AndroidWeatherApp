@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "621348752520",
+    "firebase_url": "https://dweather-3d260.firebaseio.com",
+    "project_id": "dweather-3d260",
+    "storage_bucket": "dweather-3d260.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621348752520:android:98d5d339f92f52f185e33d",
+        "android_client_info": {
+          "package_name": "ru.skillsnet.falchio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621348752520-ltq6nnqrrngkhehq1f0j5pv5kphl3r9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSGoGvzUObwfexjUeEDd188Csh8aRcILQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621348752520-ltq6nnqrrngkhehq1f0j5pv5kphl3r9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

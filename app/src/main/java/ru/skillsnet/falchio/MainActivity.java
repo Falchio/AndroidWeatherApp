@@ -4,15 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.ThemedSpinnerAdapter;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,6 +40,7 @@ import ru.skillsnet.falchio.receiver.ConnectReceiver;
 
 public class MainActivity extends AppStyle implements GlobalConstants {
     private static final int SETTING_CODE = 88;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +96,6 @@ public class MainActivity extends AppStyle implements GlobalConstants {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 
     private void saveToFile(Parcelable parcel, String fileName) {

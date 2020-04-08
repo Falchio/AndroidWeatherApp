@@ -28,6 +28,7 @@ import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
 import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
 import ru.skillsnet.falchio.openweathergson.Weather;
+import ru.skillsnet.falchio.receiver.MyFirebaseMessagingService;
 import ru.skillsnet.falchio.service.WeatherService;
 
 import static ru.skillsnet.falchio.data.GlobalConstants.OW_IMAGE;
@@ -67,6 +68,7 @@ public class MainFragment extends Fragment {
         });
 
         Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), WeatherService.class));
+        Objects.requireNonNull(getActivity()).startService(new Intent(getActivity(), MyFirebaseMessagingService.class));
 
     }
 
