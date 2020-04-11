@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,10 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".MainFragment">
-
-        <!-- TODO: Update blank fragment layout -->
 
         <TextView
             android:id="@+id/text_view_location"
@@ -61,7 +58,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:padding="8dp"
             android:text="@string/temp_temperature"
             android:textSize="48sp"
             app:layout_constraintBottom_toTopOf="@+id/text_view_description"
@@ -108,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="left"
+                android:gravity="start"
                 android:textSize="24sp" />
 
             <ImageView
@@ -123,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="left"
+                android:gravity="start"
                 android:textSize="24sp" />
 
         </TableRow>

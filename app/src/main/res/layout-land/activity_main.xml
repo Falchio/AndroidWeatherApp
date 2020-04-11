@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <include
@@ -16,10 +16,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    здесь была ошибка, при использовании wrap_content, так как контент выходил за рамки экрана  -->
+<!--    решилось строками android:layout_height="0dp", эта строка  app:layout_constraintBottom_toBottomOf="parent"  крепит нижнюю границу TableRow к нижней границе Activity -->
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
 
@@ -27,7 +30,7 @@
             android:id="@+id/frag_cont_view_second"
             android:name="ru.skillsnet.falchio.SecondFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="2"
             tools:layout="@layout/fragment_second" />
 
@@ -36,7 +39,7 @@
             android:id="@+id/frag_cont_view_main"
             android:name="ru.skillsnet.falchio.MainFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             tools:layout="@layout/fragment_main" />
     </TableRow>
