@@ -2,6 +2,8 @@ package ru.skillsnet.falchio.decor;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import ru.skillsnet.falchio.R;
@@ -14,10 +16,12 @@ public abstract class AppStyle extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (isDarkTheme())
+        if (!isDarkTheme()){
             setTheme(R.style.DayNightTheme);
-        else
+        }else {
             setTheme(R.style.AppLightTheme);
+        }
+
     }
 
     // Чтение настроек
