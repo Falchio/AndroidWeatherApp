@@ -41,5 +41,8 @@
     <string name="mobile_data_enabled">Mobile data enabled</string>
     <string name="not_connected_to_internet">Not connected to internet</string>
     <string name="title_activity_maps">Map</string>
+    <string name="open_map">Open map</string>
+    <string name="selected_location">selected location</string>
+    <string name="weather_request">weather request</string>
 
 </resources>

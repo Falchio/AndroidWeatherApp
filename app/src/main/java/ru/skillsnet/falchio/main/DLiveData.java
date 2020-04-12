@@ -48,6 +48,12 @@ public class DLiveData implements LifecycleObserver {
         requestRetrofit(userLocation, KEY_API, UNITS, LANG);
     }
 
+    public void getWeatherData(String lat, String lon) {
+        opSource = new OpenSimpleDataSource(MyApplication.getInstance().getOpenWeatherDao());
+        initRetrofit();
+        requestRetrofit(lat,lon, KEY_API, UNITS, LANG);
+    }
+
     private void initRetrofit(){
         Retrofit retrofit;
         retrofit = new  Retrofit.Builder()
@@ -89,6 +95,40 @@ public class DLiveData implements LifecycleObserver {
                 Log.e("DWeather", "onFailure: have Failure  " + t.toString());
             }
         });
+    }
+
+    private void requestRetrofit(String lat,String lon, String keyApi, String units, String language){
+        Log.e("DWeather", "requestRetrofit: send request");
+        openWeather.loadWeather(lat,lon, keyApi, units, language)
+                .enqueue(new Callback<OpenweatherRequest>() {
+                    @Override
+                    public void onResponse(Call<OpenweatherRequest> call, Response<OpenweatherRequest> response) {
+
+                        OpenweatherRequest opRequest = response.body();
+                        SimpleWeatherData swd = new SimpleWeatherData(
+                                opRequest.getName(),
+                                opRequest.getDt(),
+                                (long) opRequest.getMain().getTemp()
+                        );
+
+                        Thread t1 = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                opSource.addSimpleWeatherData(swd);
+                                Log.e("DLIVEDATA", "run: " + swd.getSimpleDataString() );
+                            }
+                        });
+
+                        t1.start();
+                        viewModel.getOpenWeatherMutableLiveData().setValue(opRequest);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<OpenweatherRequest> call, Throwable t) {
+                        Log.e("DWeather", "onFailure: have Failure  " + t.toString());
+                    }
+                });
     }
 }
 

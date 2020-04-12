@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import ru.skillsnet.MyApplication;
 import ru.skillsnet.falchio.main.DLiveData;
 import ru.skillsnet.falchio.main.DViewModel;
 import ru.skillsnet.falchio.openweathergson.OpenweatherRequest;
@@ -35,11 +36,12 @@ public class MainFragment extends Fragment {
     private TextView temperatureTextView;
     private TextView feelsLikeText;
     private TextView windSpeedText;
+
+
+
     private TextView locationText;
     private TextView descriptionText;
     private TextView dateText;
-    private final DLiveData liveData = new DLiveData();
-    private final DViewModel model = liveData.getViewModel();
     private ImageView weatherIcon;
 
 
@@ -47,11 +49,12 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLifecycle().addObserver(liveData);
-
+        getLifecycle().addObserver(MyApplication.getInstance().getLiveData());
+        DViewModel model = MyApplication.getInstance().getModel();
         model.getOpenWeatherMutableLiveData().observe(this, new Observer<OpenweatherRequest>() {
             @Override
             public void onChanged(OpenweatherRequest openweatherRequest) {
