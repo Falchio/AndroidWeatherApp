@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ru.skillsnet.falchio">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,30 +21,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppLightTheme">
 
-        <service android:name=".receiver.MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
-        <receiver
-            android:name=".receiver.ConnectReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action
-                    android:name="android.net.conn.CONNECTIVITY_CHANGE"
-                    tools:ignore="BatteryLife" />
-                <action
-                    android:name="android.net.wifi.WIFI_STATE_CHANGED"
-                    tools:ignore="BatteryLife"/>
-            </intent-filter>
-        </receiver>
+        <activity
+            android:name=".googlemap.MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
 
-        <service
-            android:name=".service.WeatherService"
-            android:description="@string/service_for_weather_update"
-            android:exported="false" />
+
 
         <activity
             android:name=".About"
@@ -73,6 +72,32 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <service android:name=".receiver.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".receiver.ConnectReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="android.net.conn.CONNECTIVITY_CHANGE"
+                    tools:ignore="BatteryLife" />
+                <action
+                    android:name="android.net.wifi.WIFI_STATE_CHANGED"
+                    tools:ignore="BatteryLife" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".service.WeatherService"
+            android:description="@string/service_for_weather_update"
+            android:exported="false" />
+
     </application>
 
 </manifest>
