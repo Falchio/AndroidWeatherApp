@@ -106,6 +106,9 @@ public class MainActivity extends AppStyle implements GlobalConstants {
                     }
                 });
                 t1.start();
+            case R.id.oauth:
+                Intent oauthIntent = new Intent(MainActivity.this, OAuth.class);
+                startActivity(oauthIntent);
             case R.id.button_menu_quit:
                 finish();
                 return true;

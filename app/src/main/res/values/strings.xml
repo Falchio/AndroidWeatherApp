@@ -44,5 +44,6 @@
     <string name="open_map">Open map</string>
     <string name="selected_location">selected location</string>
     <string name="weather_request">weather request</string>
+    <string name="oauth">OAuth</string>
 
 </resources>
