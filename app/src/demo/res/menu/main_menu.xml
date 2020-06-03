@@ -17,15 +17,18 @@
         android:title="@string/menu_button_about" />
 
     <item
+        android:enabled="false"
         android:id="@+id/weather_request"
         android:orderInCategory="4"
         android:title="@string/weather_request" />
 
     <item
+        android:enabled="false"
         android:id="@+id/map_fragment"
         android:orderInCategory="5"
         android:title="@string/open_map" />
     <item
+        android:enabled="false"
         android:id="@+id/oauth"
         android:orderInCategory="7"
         android:title="@string/oauth" />
